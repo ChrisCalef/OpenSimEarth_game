@@ -1,0 +1,22 @@
+<TorsionProjectOptions>
+<Address>127.0.0.1</Address>
+<Password>password</Password>
+<Port>6060</Port>
+<LastConfig>Debug</LastConfig>
+<Breakpoints/>
+<Bookmarks/>
+<OpenFiles>
+<File ScrollX="0" ScrollY="0">art\datablocks\datablockExec.cs</File>
+<File ScrollX="0" ScrollY="202">scripts\server\game.cs</File>
+<File ScrollX="0" ScrollY="41">levels\Empty Terrain.mis</File>
+<File ScrollX="0" ScrollY="70">levels\Empty Room.mis</File>
+<File ScrollX="0" ScrollY="62">levels\TerrainPager.mis</File>
+<File ScrollX="0" ScrollY="157">scripts\server\weapon.cs</File>
+<File ScrollX="0" ScrollY="15">scripts\server\scriptExec.cs</File>
+<File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\main.cs</File>
+<File ScrollX="0" ScrollY="444" Active="true">scripts\server\BadBehavior\BadBot.cs</File>
+<File ScrollX="0" ScrollY="0">tools\behaviorTreeEditor\main.cs</File>
+<File ScrollX="0" ScrollY="825">tools\worldEditor\scripts\EditorGui.ed.cs</File>
+<File ScrollX="0" ScrollY="178">levels\BehaviorTestbed.mis</File>
+</OpenFiles>
+</TorsionProjectOptions>
