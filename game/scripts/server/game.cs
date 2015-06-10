@@ -193,6 +193,194 @@ function GameConnection::RefreshWeaponHud(%client, %amount, %preview, %ret, %zoo
 //-----------------------------------------------------------------------------
 // Physics Experimentation
 //-----------------------------------------------------------------------------
+
+
+function loadOSM()
+{
+   //here, read lat/long for each node as we get to it, convert it to xyz coords,
+   //and save it in an array, to be used in the DecalRoad declaration.    
+   
+   %beforeTime = getRealTime();
+   
+   //theTP.loadOSM("min.osm");     
+   //theTP.loadOSM("kincaid_map.osm");  
+   theTP.loadOSM("central_south_eug.osm");  
+   //theTP.loadOSM("thirtieth_map.osm");
+   //theTP.loadOSM("all_eugene.osm");  
+   
+   %loadTime = getRealTime() - %beforeTime;
+   echo("load time: " @ %loadTime );
+   
+}
+
+function makeStreets()
+{
+   %sqlite = new SQLiteObject(sqlite);
+   %dbname = "w130n40.db";
+   %sqlite.openDatabase(%dbname);
+   
+   %query = "SELECT osmId,type,name FROM osmWay;";  
+	%result = sqlite.query(%query, 0);
+   if (%result)
+   {	   
+      while (!sqlite.endOfResult(%result))
+      {
+         %wayId = sqlite.getColumn(%result, "osmId");
+         %wayType = sqlite.getColumn(%result, "type");         
+         %wayName = sqlite.getColumn(%result, "name");
+         echo("found a way: " @ %wayName);
+         if ((%wayType $= "residential")||
+               (%wayType $= "tertiary")||
+               (%wayType $= "trunk")||
+               (%wayType $= "trunk_link")||
+               (%wayType $= "motorway")||
+               (%wayType $= "motorway_link")||
+               (%wayType $= "service")||
+               (%wayType $= "footway")||
+               (%wayType $= "path"))
+         {   
+            
+            //Width
+            %roadWidth = 10.0;       
+            if ((%wayType $= "tertiary")||(%wayType $= "trunk_link"))
+               %roadWidth = 18.0; 
+            else if ((%wayType $= "trunk")||(%wayType $= "motorway_link"))
+               %roadWidth = 32.0; 
+            else if (%wayType $= "motorway")
+               %roadWidth = 40.0; 
+            else if (%wayType $= "footway")
+               %roadWidth = 2.5; 
+            else if (%wayType $= "path")
+               %roadWidth = 5.0; 
+            
+            //Material
+            %roadMaterial = "DefaultDecalRoadMaterial";
+            if (%wayType $= "footway")
+               %roadMaterial = "DefaultRoadMaterialPath";
+            else if ((%wayType $= "service")||(%wayType $= "path"))
+               %roadMaterial = "DefaultRoadMaterialOther";
+               
+            //now, query the osmWayNode and osmNode tables to get the list of points
+            %node_query = "SELECT wn.nodeId,n.latitude,n.longitude,n.type,n.name from " @ 
+                           "osmWayNode wn JOIN osmNode n ON wn.nodeId = n.osmId " @
+                           "WHERE wn.wayID = " @ %wayId @ ";";
+            %result2 = sqlite.query(%node_query, 0);
+            if (%result2)
+            {	   
+               echo("query2 results: " @ sqlite.numRows(%result2));
+               %nodeString = "";
+               while (!sqlite.endOfResult(%result2))
+               {
+                  %latitude = sqlite.getColumn(%result2, "latitude");
+                  %longitude = sqlite.getColumn(%result2, "longitude");
+                  %pos = theTP.convertLatLongToXYZ(%longitude @ " " @ %latitude @ " 0.0");
+                  %type = sqlite.getColumn(%result2, "type");         
+                  %name = sqlite.getColumn(%result2, "name");               
+                  echo("node latitude " @ %latitude @ " longitude " @ %longitude @
+                       " type " @ %type @ " name " @ %name );
+                  %nodeString = %nodeString @ " Node = \"" @ %pos @ " " @ %roadWidth @ "\";";                      
+                  sqlite.nextRow(%result2);
+               }            
+            }
+           // " Node = \"0.0 0.0 300.0 30.000000\";" @
+            echo( %nodeString );
+            //Then, do the new DecalRoad, execed in order to get a loop into the declaration.
+            %roadString = "      new DecalRoad() {" @
+               " Material = \"" @ %roadMaterial @ "\";" @
+               " textureLength = \"25\";" @
+               " breakAngle = \"3\";" @
+               " renderPriority = \"10\";" @
+               " position = \"-8930.98 14017.1 109.587\";" @
+               " rotation = \"1 0 0 0\";" @
+               " scale = \"1 1 1\";" @
+               " canSave = \"1\";" @
+               " canSaveDynamicFields = \"1\";" @
+               %nodeString @
+            "};";
+         
+            eval(%roadString); 
+         }
+         
+         sqlite.nextRow(%result);
+      }
+   } else echo ("no results.");
+   %sqlite.delete();
+}
+
+/*
+function streetMap()
+ {   
+    %xml = new SimXMLDocument() {};
+    %xml.loadFile( "only_kincaid_map.osm" );
+     
+    // "Get" inside of the root element, "Students".     
+    %result = %xml.pushChildElement("osm");  
+    %version = %xml.attribute("version");     
+    %generator = %xml.attribute("generator");      
+    // "Get" into the first child element    
+    %xml.pushFirstChildElement("bounds"); 
+    %minlat = %xml.attribute("minlat");
+    %maxlat = %xml.attribute("maxlat");
+    echo("result: " @ %result @ " version: " @ %version @ ", generator " @ %generator @" minlat " @ %minlat @ " maxlat " @ %maxlat );
+    while  (%xml.nextSiblingElement("node"))     
+    {     
+       %id = %xml.attribute("id"); 
+       %lat = %xml.attribute("lat");     
+       %lon = %xml.attribute("lon");    
+       echo("node " @ %id @ " lat " @ %lat @ " long " @ %lon);   
+       //HERE: store data in sqlite, and then read it back in the makeStreets function. 
+       //Need at least a "way" table and a "node" table, plus other decorators I'm sure.
+    } 
+    %xml.nextSiblingElement("way");    
+    echo("way: " @ %xml.attribute("id"));
+    %xml.pushFirstChildElement("nd");
+    echo("ref: " @ %xml.attribute("ref"));
+    while (%xml.nextSiblingElement("nd")) 
+    {
+       echo("ref: " @ %xml.attribute("ref"));
+    }
+    while (%xml.nextSiblingElement("tag"))
+    {
+       echo("k: " @ %xml.attribute("k") @ "  v: " @ %xml.attribute("v") );
+    }
+    
+ }  */
+   
+   
+function makeRunways()
+{
+    new DecalRoad() {
+      Material = "DefaultDecalRoadMaterial";
+      textureLength = "25";
+      breakAngle = "3";
+      renderPriority = "10";
+      position = "-8930.98 14017.1 109.587";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      Node = "-8930.984375 14017.139648 109.587013 30.000000";
+      Node = "-10035.976563 12977.502930 110.499863 30.000000";
+   };  
+   
+   //new MeshRoad() {
+      //topMaterial = "DefaultRoadMaterialTop";
+      //bottomMaterial = "DefaultRoadMaterialOther";
+      //sideMaterial = "DefaultRoadMaterialOther";
+      //textureLength = "25";
+      //breakAngle = "3";
+      //widthSubdivisions = "0";
+      //position = "-9546.98 15036.5 109.777";
+      //rotation = "1 0 0 0";
+      //scale = "1 1 1";
+      //canSave = "1";
+      //canSaveDynamicFields = "1";
+//
+      //Node = "-9546.98 15036.5 109.777 30 5 0 0 1";
+      //Node = "-9522.87 12639.8 113.491 30 5 0 0 1";
+   //};
+}
 function makeM4(%start)
 {   
    //physicsSetTimeScale(0.5);
@@ -202,12 +390,15 @@ function makeM4(%start)
    %grav = true;
    %ambient = true;
   
-   %start = "415 6515 195";
+   //%start = "0 0 0.1";
+   //%start = "415 6515 195";
+   %start = "1800 1820 140";
    $m4 = new PhysicsShape() {
       playAmbient = %ambient;
       dataBlock = "M4Physics";
       position = %start;
-      rotation = "0 0 1 270";
+      rotation = "0 0 1 0";
+      //scale = "0.5 0.5 0.5";
       canSave = "1";
       canSaveDynamicFields = "1";
       areaImpulse = "0";
@@ -218,14 +409,18 @@ function makeM4(%start)
       hasGravity = %grav;
       isDynamic = %dyn;
    };
-   MissionGroup.add($m4);  
+   MissionGroup.add($m4); 
    
-   %start = "420 6520 195";
+   
+   
+   //%start = "3 -3 1";
+   %start = "1805 1820 140";
    $m5 = new PhysicsShape() {
       playAmbient = %ambient;
       dataBlock = "M4Physics";
       position = %start;
-      rotation = "0 0 1 0";
+      rotation = "0 0 1 -100";
+      scale = "0.1 0.1 0.1";
       canSave = "1";
       canSaveDynamicFields = "1";
       areaImpulse = "0";
@@ -238,12 +433,14 @@ function makeM4(%start)
    };
    MissionGroup.add($m5); 
    
+   /*
+   //%start = "-3 3 1";
    %start = "425 6515 195";
    $m6 = new PhysicsShape() {
       playAmbient = %ambient;
       dataBlock = "M4Physics";
       position = %start;
-      rotation = "0 0 1 90";
+      rotation = "0 0 1 70";
       canSave = "1";
       canSaveDynamicFields = "1";
       areaImpulse = "0";
@@ -256,7 +453,8 @@ function makeM4(%start)
    };
    MissionGroup.add($m6);
    
-   %start = "420 6510 195";
+   //%start = "3 3 1";
+   %start = "410 6510 195";
    $m7 = new PhysicsShape() {
       playAmbient = %ambient;
       dataBlock = "M4Physics";
@@ -273,33 +471,203 @@ function makeM4(%start)
       isDynamic = %dyn;
    };
    MissionGroup.add($m7); 
-  
+
+   %start = "405 6515 195";
+   $m8 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 0";
+      //scale = "0.5 0.5 0.5";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m8); 
+   
+   //%start = "3 -3 1";
+   %start = "410 6520 195";
+   $m9 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 -100";
+      scale = "0.1 0.1 0.1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m9); 
+   
+   //%start = "-3 3 1";
+   %start = "412 6518 195";
+   $m10 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 70";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m10);
+   
+   //%start = "3 3 1";
+   %start = "420 6500 195";
+   $m11 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 180";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m11); 
+   
+   %start = "415 6495 195";
+   $m12 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 0";
+      //scale = "0.5 0.5 0.5";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m12); 
+   
+   //%start = "3 -3 1";
+   %start = "420 6490 195";
+   $m13 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 -100";
+      scale = "0.1 0.1 0.1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m13); 
+   
+   //%start = "-3 3 1";
+   %start = "425 6495 195";
+   $m14 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 70";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m14);
+   
+   //%start = "3 3 1";
+   %start = "420 6510 195";
+   $m15 = new PhysicsShape() {
+      playAmbient = %ambient;
+      dataBlock = "M4Physics";
+      position = %start;
+      rotation = "0 0 1 180";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      areaImpulse = "0";
+      damageRadius = "0";
+      invulnerable = "0";
+      minDamageAmount = "0";
+      radiusDamage = "0";
+      hasGravity = %grav;
+      isDynamic = %dyn;
+   };
+   MissionGroup.add($m15); 
+   */
 }
 
 function m4D()
-{
-   $m4.setDynamic(1);  
-   $m5.setDynamic(1);  
-   $m6.setDynamic(1); 
-   $m7.setDynamic(1); 
+{//TEMP, this will all be automatic
+
+   //$m4.setDynamic(1);  
+   //$m5.setDynamic(1);  
+   //$m6.setDynamic(1); 
+   //$m7.setDynamic(1); 
    
-   $m4.aitp(2,"0 0 0");  
-   $m5.aitp(2,"0 0 0");
-   $m6.aitp(2,"0 0 0");
-   $m7.aitp(2,"0 0 0");
+   $m4.setBehavior("baseTree");     
+   $m5.setBehavior("baseTree");  
+
+   /*
+   $m6.setBehavior("baseTree");  
+   $m7.setBehavior("baseTree");  
+   $m8.setBehavior("baseTree");  
+   $m9.setBehavior("baseTree");  
+   $m10.setBehavior("baseTree");  
+   $m11.setBehavior("baseTree");  
+   $m12.setBehavior("baseTree");  
+   $m13.setBehavior("baseTree");  
+   $m14.setBehavior("baseTree");  
+   $m15.setBehavior("baseTree");  
+   */
+   //$m4.aitp(2,"0 0 0");  
+   //$m5.aitp(2,"0 0 0");
+   //$m6.aitp(2,"0 0 0");
+   //$m7.aitp(2,"0 0 0");
 }
 
 function m4P()
 {
    $m4.setDynamic(1);  
-   $m5.setDynamic(1);  
-   $m6.setDynamic(1); 
-   $m7.setDynamic(1); 
+   //$m5.setDynamic(1);  
+   //$m6.setDynamic(1); 
+   //$m7.setDynamic(1); 
    
-   $m4.aitp(2,"-30 0 30");  
-   $m5.aitp(2,"0 -30 30");
-   $m6.aitp(2,"30 0 30");
-   $m7.aitp(2,"0 30 30");
+   //$m4.aitp(2,"-30 0 30");  
+   //$m5.aitp(2,"0 -30 30");
+   //$m6.aitp(2,"30 0 30");
+   //$m7.aitp(2,"0 30 30");
 }
 
 //Joint debugging, Chest Kinematic
@@ -307,7 +675,7 @@ function m4CK()
 {
    
    $m4.setPartDynamic(2,0);
-   $m5.setPartDynamic(2,0);
-   $m6.setPartDynamic(2,0);
-   $m7.setPartDynamic(2,0);
+   //$m5.setPartDynamic(2,0);
+   //$m6.setPartDynamic(2,0);
+   //$m7.setPartDynamic(2,0);
 }

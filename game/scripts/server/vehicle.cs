@@ -47,6 +47,8 @@ function VehicleData::onAdd(%this, %obj)
 
    if (%this.nameTag !$= "")
       %obj.setShapeName(%this.nameTag);
+      
+   echo(%this.getClassName() @ "  " @ %this @ " is mountable: " @ %this.isMountable);
 }
 
 function VehicleData::onRemove(%this, %obj)

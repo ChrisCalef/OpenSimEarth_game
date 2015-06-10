@@ -8,7 +8,8 @@ new Root(getHealthTree) {
       canSaveDynamicFields = "1";
 
       new ScriptEval() {
-         behaviorScript = "if (%obj.getDamagePercent() > 0.75) return SUCCESS;";
+         //behaviorScript = "if (%obj.getDamagePercent() > 0.75) return SUCCESS;";
+         behaviorScript = "if (true) return SUCCESS;";//temp, trying this with physicsShape not AIPlayer, no damage yet.
          defaultReturnStatus = "FAILURE";
          internalName = "need health?";
          canSave = "1";

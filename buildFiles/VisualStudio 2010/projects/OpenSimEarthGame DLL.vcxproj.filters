@@ -3030,6 +3030,9 @@
     <ClCompile Include="..\..\..\..\..\Engine\source\BadBehavior\leaf\compiled\followBehaviorAction.cpp">
       <Filter>Source Files\Engine\BadBehavior\leaf\compiled</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Engine\source\sim\dataSource\vehicleDataSource.cpp">
+      <Filter>Source Files\Engine\sim\dataSource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="F:\T3D\Torque3D\Engine\source\T3D\accumulationVolume.h">
@@ -5704,6 +5707,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Engine\source\BadBehavior\leaf\compiled\followBehaviorAction.h">
       <Filter>Source Files\Engine\BadBehavior\leaf\compiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Engine\source\sim\dataSource\vehicleDataSource.h">
+      <Filter>Source Files\Engine\sim\dataSource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

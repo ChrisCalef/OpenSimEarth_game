@@ -254,6 +254,7 @@
     <ClCompile Include="..\..\..\..\..\Engine\source\navigation\guiNavEditorCtrl.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\navigation\navContext.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\sim\dataSource\dataSource.cpp" />
+    <ClCompile Include="..\..\..\..\..\Engine\source\sim\dataSource\vehicleDataSource.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\sim\dataSource\worldDataSource.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\terrain\terrPager.cpp" />
     <ClCompile Include="F:\T3D\Torque3D\Engine\source\T3D\accumulationVolume.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="..\..\..\..\..\Engine\source\navigation\guiNavEditorCtrl.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\navigation\navContext.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\sim\dataSource\dataSource.h" />
+    <ClInclude Include="..\..\..\..\..\Engine\source\sim\dataSource\vehicleDataSource.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\sim\dataSource\worldDataSource.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\terrain\terrPager.h" />
     <ClInclude Include="F:\T3D\Torque3D\Engine\source\T3D\accumulationVolume.h" />

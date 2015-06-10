@@ -85,8 +85,8 @@ new SimGroup(MissionGroup) {
          outdoorWeight = "1";
          isAIControlled = "0";
          dataBlock = "SpawnSphereMarker";
-         position = "6 -4 3";
-         rotation = "0 0 1 -45";
+         position = "3 -14 3";
+         rotation = "0 0 -1 45";
          scale = "1 1 1";
          canSave = "1";
          canSaveDynamicFields = "1";
@@ -109,9 +109,6 @@ new SimGroup(MissionGroup) {
    };
    new TSStatic() {
       shapeName = "art/shapes/physx3/tower.dae";
-      position = "-40 40 -1";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
       playAmbient = "1";
       meshCulling = "0";
       originSort = "0";
@@ -126,7 +123,33 @@ new SimGroup(MissionGroup) {
       enablePhysicsRep = "1";
       renderNormals = "0";
       forceDetail = "-1";
+      position = "-40 40 -1";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new Item() {
+      static = "1";
+      rotate = "1";
+      isAIControlled = "0";
+      dataBlock = "HealthKitPatch";
+      position = "45 24 0.1";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new Item() {
+      static = "1";
+      rotate = "1";
+      isAIControlled = "0";
+      dataBlock = "HealthKitSmall";
+      position = "42 -12 0.1";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
       canSave = "1";
       canSaveDynamicFields = "1";
    };
 };
+//--- OBJECT WRITE END ---

@@ -39,7 +39,7 @@ $pref::Input::LinkMouseSensitivity = 1;
 // DInput keyboard, mouse, and joystick prefs
 $pref::Input::KeyboardEnabled = 1;
 $pref::Input::MouseEnabled = 1;
-$pref::Input::JoystickEnabled = 0;
+$pref::Input::JoystickEnabled = 1;
 $pref::Input::KeyboardTurnSpeed = 0.1;
 
 $sceneLighting::cacheSize = 20000;

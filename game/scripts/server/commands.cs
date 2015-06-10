@@ -121,3 +121,21 @@ function serverCmdReloadWeapon(%client)
    if (%image > 0)
       %image.clearAmmoClip(%player, $WeaponSlot);
 }
+
+
+
+// RFB-> Bravetree Car Pack
+//Functions to help get the player out of the vehicle.
+
+function serverCmdsetPlayerControl(%client)
+{
+   %client.setControlObject(%client.player);
+}
+
+function getOut()
+{
+   commandToServer('setPlayerControl');
+   schedule(500,0,"jump","");
+   schedule(600,0,"jump","");
+}
+

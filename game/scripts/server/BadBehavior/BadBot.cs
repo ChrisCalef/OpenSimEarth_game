@@ -312,7 +312,7 @@ function findHealthTask::behavior(%this, %obj)
 {
    // get the objects datablock
    %db = %obj.dataBlock;
-   
+   //echo(%this.getId() @ " trying to find health!");
    // do a container search for items
    initContainerRadiusSearch( %obj.position, %db.findItemRange, %db.itemObjectTypes );
    while ( (%item = containerSearchNext()) != 0 )
@@ -321,11 +321,15 @@ function findHealthTask::behavior(%this, %obj)
       if(%item.dataBlock.category !$= "Health" || !%item.isEnabled() || %item.isHidden())
          continue;
       
+      %diff = VectorSub(%obj.position,%item.position);
+      echo("found a health! " @ %item.position @ " distance " @ VectorLen(%diff));
       // check that the item is within the bots view cone
-      if(%obj.checkInFov(%item, %db.visionFov))
+      //if(%obj.checkInFov(%item, %db.visionFov))
+      if (true)//also don't have a checkInFov for physicsShapes yet
       {
          // set the targetItem field on the bot
          %obj.targetItem = %item;
+         echo("found a health in view! " @ %item.position);
          break;
       }
    }
@@ -344,14 +348,19 @@ function getHealthTask::precondition(%this, %obj)
 
 function getHealthTask::onEnter(%this, %obj)
 {
+   echo(%obj.getId() @ " trying to get health!");
    // move to the item
-   %obj.moveTo(%obj.targetItem.position);  
+   %obj.moveTo(%obj.targetItem);  
+   //%obj.orientToPos(%obj.targetItem.position);
+   //%obj.seqRun();
 }
 
 function getHealthTask::behavior(%this, %obj)
 {
    // succeed when we reach the item
-   if(!%obj.atDestination)
+   %diff = VectorSub(%obj.targetItem.position ,%obj.position);
+   //if(!%obj.atDestination)
+   if ( VectorLen(%diff) > %obj.dataBlock.foundItemDistance )
       return RUNNING;
    
    return SUCCESS;
@@ -477,11 +486,153 @@ function combatMoveTask::behavior(%this, %obj)
    return SUCCESS;
 }
 
+
+
+
+
+
+
+
 //=============================================================================
-// testBehaveTask
-//=============================================================================
-function testBehaveTask::behavior(%this, %obj)
+//
+//                 OPEN SIM EARTH
+//
+
+function PhysicsShape::onStartup(%this)
 {
-   echo("TESTING A NEW BEHAVIOR!!!");
-   %obj.setDynamic(1);
+   echo(%this @ " calling onStartup!");
+   
+   %this.setAmbientSeqByName("ambient");
+   %this.setIdleSeqByName("ambient");
+   %this.setWalkSeqByName("walk");
+   %this.setRunSeqByName("run");
+   %this.setAttackSeqByName("power_punch_down");
+   %this.setBlockSeqByName("tpose");
+   %this.setFallSeqByName("ambient");
+   %this.setGetupSeqByName("rSideGetup");
+   
+   %this.groundMove();
+}
+
+function PhysicsShape::orientTo(%this, %dest)
+{
+   %pos = isObject(%dest) ? %dest.getPosition() : %dest;
+   %this.orientToPos(%pos);
+}
+
+function PhysicsShape::moveTo(%this, %dest, %slowDown)
+{
+   %pos = isObject(%dest) ? %dest.getPosition() : %dest;
+   
+   //This is how you print messages to the chat gui instead of the console:
+   //%this.say("moving to " @ %pos);
+   
+   echo(%this.getId() @ " moving to " @ %pos);
+   
+   %this.orientToPos(%pos);
+   
+   %this.seqWalk();
+   //%this.seqRun();
+   
+   //%obj.atDestination = false;
+}
+
+
+
+function PhysicsShape::say(%this, %message)//Testing, does this only work for AIPlayers?
+{
+   chatMessageAll(%this, '\c3%1: %2', %this.getid(), %message);  
+}
+
+
+
+////////////// BEHAVIORS ///////////////////////////////
+
+///////////////////////////////////
+//[behaviorName]::precondition()
+//[behaviorName]::onEnter()
+//[behaviorName]::onExit()
+
+//Do a raycast, either torque or physx, and find the ground directly below me.
+//if below some threshold, then just move/interpolate us there. If above that, go to
+//falling animation and/or ragdoll until we hit the ground and stop, then go to getUp task.
+
+/* // No longer necessary... this is now done during processTick.
+function goToGround::behavior(%this, %obj)
+{
+   %start = VectorAdd(%obj.position,"0 0 1.0");//Add a tiny bit (or, a huge amount)
+                // so we don't get an error when we're actually on the ground.
+                
+   %contact = physx3CastGroundRay(%start);
+   
+   %obj.setPosition(%contact);
+   echo(%this @ " is going to ground!!!!!!");
+   %obj.setAmbientSeqByName("ambient");
+   %obj.setIdleSeqByName("ambient");
+   %obj.setWalkSeqByName("walk");
+   %obj.setRunSeqByName("run");
+   %obj.setAttackSeqByName("power_punch_down");
+   %obj.setBlockSeqByName("tpose");
+   %obj.setFallSeqByName("ambient");
+   %obj.setGetupSeqByName("rSideGetup");
+   
+   return SUCCESS;
+}
+*/
+
+///////////////////////////////////
+//getUp::precondition()
+//getUp::onEnter()
+//getUp::onExit()
+
+function getUp::behavior(%this, %obj)
+{
+   
+   return SUCCESS;
+}
+
+
+
+///////////////////////////////////
+//moveToPosition::precondition()
+//moveToPosition::onEnter()
+//moveToPosition::onExit()
+
+function moveToPosition::behavior(%this, %obj)
+{
+   echo("calling move to position!");
+   %obj.groundMove();
+   return SUCCESS;   
+}
+
+
+//=============================================================================
+// findTarget task
+//=============================================================================
+function findTarget::behavior(%this, %obj)
+{
+   // get the objects datablock
+   %db = %obj.dataBlock;
+   //echo(%this.getId() @ " trying to find target!");
+   // do a container search for items
+   initContainerRadiusSearch( %obj.position, %db.findItemRange, %db.itemObjectTypes );
+   while ( (%item = containerSearchNext()) != 0 )
+   {
+      // filter out irrelevant items -- temp
+      if(%item.dataBlock.category !$= "Health" || !%item.isEnabled() || %item.isHidden())
+         continue;
+      
+      %diff = VectorSub(%obj.position,%item.position);
+      
+      // check that the item is within the bots view cone
+      //if(%obj.checkInFov(%item, %db.visionFov))
+      if (true)// (We don't have a checkInFov for physicsShapes yet)
+      {
+         // set the targetItem field on the bot
+         %obj.targetItem = %item;
+         break;
+      }
+   }
+   
+   return isObject(%obj.targetItem) ? SUCCESS : FAILURE;
 }

@@ -800,7 +800,10 @@ function GameCore::spawnPlayer(%game, %client, %spawnPoint, %noControl)
       // Spawn with the engine's Sim::spawnObject() function
       %player = spawnObject(%spawnClass, %spawnDatablock, "",
                             %spawnProperties, %spawnScript);
+      //%player = spawnObject("FlyingVehicle", "WarSparrow", "",
+      //                      %spawnProperties, %spawnScript);//MAYBE?
 
+      $myPlayer = %player;
       // If we have an object do some initial setup
       if (isObject(%player))
       {

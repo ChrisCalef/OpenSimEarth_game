@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.4.0 (6232 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <bounds minlat="44.0201600" minlon="-123.0804200" maxlat="44.0230000" maxlon="-123.0771700"/> 
+ <node id="39996965" visible="true" version="5" changeset="8813007" timestamp="2011-07-24T08:35:06Z" user="Zaliek" uid="489716" lat="44.0218586" lon="-123.0784886"/>
+ <node id="896709248" visible="true" version="2" changeset="8813007" timestamp="2011-07-24T08:35:06Z" user="Zaliek" uid="489716" lat="44.0214928" lon="-123.0784837"/>
+ <node id="1371904625" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0185329" lon="-123.0770801"/>
+ <node id="1371904626" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0187076" lon="-123.0770531"/>
+ <node id="1371904627" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0189476" lon="-123.0770801"/>
+ <node id="1371904628" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0188323" lon="-123.0770543"/>
+ <node id="1371904634" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0190639" lon="-123.0771228"/>
+ <node id="1371904635" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0202841" lon="-123.0778551"/>
+ <node id="1371904637" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0208645" lon="-123.0782096"/>
+ <node id="1371904638" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0211751" lon="-123.0783865"/>
+ <node id="1371904641" visible="true" version="1" changeset="8813007" timestamp="2011-07-24T08:35:06Z" user="Zaliek" uid="489716" lat="44.0213339" lon="-123.0784553"/>
+ <node id="40114238" visible="true" version="5" changeset="8813007" timestamp="2011-07-24T08:35:05Z" user="Zaliek" uid="489716" lat="44.0184157" lon="-123.0771732"/>
+ <bogus id="3"/>
+ <way id="5499703" visible="true" version="6" changeset="9232494" timestamp="2011-09-06T23:27:36Z" user="vkungys" uid="128470">
+  <nd ref="39996965"/>
+  <nd ref="896709248"/>
+  <nd ref="1371904641"/>
+  <nd ref="1371904638"/>
+  <nd ref="1371904637"/>
+  <nd ref="1371904635"/>
+  <nd ref="792282455"/>
+  <nd ref="1371904634"/>
+  <nd ref="1371904627"/>
+  <nd ref="1371904628"/>
+  <nd ref="1371904626"/>
+  <nd ref="1371904625"/>
+  <nd ref="40114238"/>
+  <tag k="highway" v="residential"/>
+  <tag k="name" v="Kincaid Street"/>
+  <tag k="tiger:cfcc" v="A41"/>
+  <tag k="tiger:county" v="Lane, OR"/>
+  <tag k="tiger:name_base" v="Kincaid"/>
+  <tag k="tiger:reviewed" v="no"/>
+  <tag k="tiger:separated" v="no"/>
+  <tag k="tiger:source" v="tiger_import_dch_v0.6_20070808"/>
+  <tag k="tiger:tlid" v="178175330:178175339"/>
+  <tag k="tiger:upload_uuid" v="bulk_upload.pl-6ff4b116-d53e-47f8-92b9-758fd64b11b9"/>
+  <tag k="tiger:zip_left" v="97405"/>
+  <tag k="tiger:zip_right" v="97405"/>
+ </way>
+ <way id="186842379" visible="true" version="2" changeset="16318587" timestamp="2013-05-28T04:17:15Z" user="Dion Dock" uid="97431">
+  <nd ref="1975910733"/>
+  <nd ref="1975910732"/>
+  <nd ref="1975910739"/>
+  <nd ref="1975910724"/>
+  <nd ref="1975910730"/>
+  <nd ref="1975910733"/>
+  <tag k="building" v="yes"/>
+ </way> 
+<way id="186842380" visible="true" version="2" changeset="16318587" timestamp="2013-05-28T04:17:15Z" user="Dion Dock" uid="97431">
+  <nd ref="1975910733"/>
+  <nd ref="1975910732"/>
+  <nd ref="1975910739"/>
+  <nd ref="1975910724"/>
+  <nd ref="1975910730"/>
+  <nd ref="1975910733"/>
+  <tag k="building" v="yes"/>
+ </way>
+</osm>

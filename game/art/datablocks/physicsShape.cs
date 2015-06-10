@@ -86,6 +86,27 @@ datablock PhysicsShapeData( M4Physics )
    restitution = "0.3";
    invulnerable = "0";
    waterDampingScale = "10";
+   
+   ///////////////////////////////////////
+   //From BadBot...
+   
+   // max visible distance
+   VisionRange = 200;
+   
+   // vision field of view
+   VisionFov = 120;
+   
+   // max range to look for items
+   findItemRange = 80;
+   
+   // min range to look for items, ie if we're this close we found it.
+   foundItemDistance = 1.5;
+   
+   // the type of object to search for when looking for targets
+   targetObjectTypes = $TypeMasks::PlayerObjectType;
+   
+   // the type of object to search for when looking for items
+   itemObjectTypes = $TypeMasks::itemObjectType;
 };
 
 

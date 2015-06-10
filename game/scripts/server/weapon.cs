@@ -262,7 +262,7 @@ function WeaponImage::onFire(%this, %obj, %slot)
          if ((%id)&&(%id.getClassName() $= "PhysicsShape")) 
          {
             %id.setDynamic(1);
-            %id.aitp(%id.getContactBody(),VectorScale(%muzzleVector,%weaponForce));
+            //%id.aitp(%id.getContactBody(),VectorScale(%muzzleVector,%weaponForce));
          }
       }
    }

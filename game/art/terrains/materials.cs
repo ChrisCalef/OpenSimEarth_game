@@ -37,17 +37,6 @@ singleton Material(TerrainFX_grass1)
    impactSoundId = "0";
 };
 
-new TerrainMaterial()
-{
-   internalName = "grass1";
-   diffuseMap = "art/terrains/Example/grass1";
-   detailMap = "art/terrains/Example/grass1_d";
-   detailSize = "10";
-   isManaged = "1";
-   detailBrightness = "1";
-   Enabled = "1";
-   diffuseSize = "200";
-};
 
 singleton Material(TerrainFX_grass2)
 {
@@ -62,19 +51,8 @@ singleton Material(TerrainFX_grass2)
    impactSoundId = "0";
 };
 
-new TerrainMaterial()
-{
-   internalName = "grass2";
-   diffuseMap = "art/terrains/Example/grass2";
-   detailMap = "art/terrains/Example/grass2_d";
-   detailSize = "10";
-   isManaged = "1";
-   detailBrightness = "1";
-   Enabled = "1";
-   diffuseSize = "200";
-};
 
-singleton Material(TerrainFX_grass1dry)
+singleton Material()
 {
    mapTo = "grass1_dry";
    footstepSoundId = 0;
@@ -83,23 +61,21 @@ singleton Material(TerrainFX_grass1dry)
    showFootprints = "1";
    materialTag0 = "Terrain";
    effectColor[0] = "0.63 0.55 0 1";
-};
-
-new TerrainMaterial()
-{
-   internalName = "grass1_dry";
-   diffuseMap = "art/terrains/Example/grass1_dry";
-   detailMap = "art/terrains/Example/grass1_dry_d";
-   detailSize = "10";
-   detailDistance = "100";
+   diffuseMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_07_Dif";
+   diffuseSize = "500";
+   normalMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_07_Nm";
+   detailMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_07";
+   detailSize = "5";
+   detailStrength = "1";
+   detailDistance = "50";
+   internalName = "gravel_07";
    isManaged = "1";
    detailBrightness = "1";
-   Enabled = "1";
-   diffuseSize = "250";
-   detailStrength = "2";
+   enabled = "1";
 };
 
-singleton Material(TerrainFX_dirt_grass)
+
+singleton Material()
 {
    mapTo = "dirt_grass";
    footstepSoundId = 0;
@@ -108,26 +84,25 @@ singleton Material(TerrainFX_dirt_grass)
    showFootprints = "1";
    materialTag0 = "Terrain";
    effectColor[0] = "0.63 0.55 0 1";
-};
-
-new TerrainMaterial()
-{
-   internalName = "dirt_grass";
-   diffuseMap = "art/terrains/Example/dirt_grass";
-   detailMap = "art/terrains/Example/dirt_grass_d";
-   detailSize = "5";
-   detailDistance = "100";
+   diffuseMap = "art/terrains/TT_Materials/Cracked and Dry Earth/TT_Earth_01_Dif";
+   diffuseSize = "500";
+   normalMap = "art/terrains/TT_Materials/Cracked and Dry Earth/TT_Earth_01_Nm";
+   detailMap = "art/terrains/TT_Materials/Cracked and Dry Earth/TT_Earth_01";
+   detailDistance = "50";
+   internalName = "earth_01";
    isManaged = "1";
    detailBrightness = "1";
-   Enabled = "1";
-   diffuseSize = "200";
+   enabled = "1";
+   detailSize = "2";
+   detailStrength = "1";
 };
+
 
 // ----------------------------------------------------------------------------
 // Sample rock
 // ----------------------------------------------------------------------------
 
-singleton Material(TerrainFX_rocktest)
+singleton Material()
 {
    mapTo = "rocktest";
    footstepSoundId = "1";
@@ -138,26 +113,24 @@ singleton Material(TerrainFX_rocktest)
    impactSoundId = "1";
    effectColor[0] = "0.25 0.25 0.25 1";
    effectColor[1] = "0.25 0.25 0.25 0";
-};
-
-new TerrainMaterial()
-{
-   internalName = "rocktest";
-   diffuseMap = "art/terrains/Example/rocktest";
-   detailMap = "art/terrains/Example/rocktest_d";
-   detailSize = "10";
+   diffuseMap = "art/terrains/TT_Materials/Cracked and Dry Earth/TT_Earth_08_Dif";
+   diffuseSize = "400";
+   normalMap = "art/terrains/TT_Materials/Cracked and Dry Earth/TT_Earth_08_Nm";
+   detailMap = "art/terrains/TT_Materials/Cracked and Dry Earth/TT_Earth_08";
+   detailSize = "3";
    detailDistance = "100";
+   internalName = "earth_08";
    isManaged = "1";
    detailBrightness = "1";
-   Enabled = "1";
-   diffuseSize = "400";
+   enabled = "1";
 };
+
 
 // ----------------------------------------------------------------------------
 // Sample rock
 // ----------------------------------------------------------------------------
 
-singleton Material(TerrainFX_stone)
+singleton Material()
 {
    mapTo = "stone";
    footstepSoundId = "1";
@@ -168,26 +141,25 @@ singleton Material(TerrainFX_stone)
    impactSoundId = "1";
    effectColor[0] = "0.25 0.25 0.25 1";
    effectColor[1] = "0.25 0.25 0.25 0";
-};
-
-new TerrainMaterial()
-{
-   internalName = "stone";
-   diffuseMap = "art/terrains/Example/stone";
-   detailMap = "art/terrains/Example/stone_d";
-   detailSize = "10";
-   detailDistance = "100";
+   diffuseMap = "art/terrains/TT_Materials/Stone and Rock/TT_Rock_14_Dif";
+   diffuseSize = "500";
+   detailMap = "art/terrains/TT_Materials/Stone and Rock/TT_Rock_14";
+   detailSize = "2";
+   detailDistance = "50";
+   internalName = "rock_14";
    isManaged = "1";
    detailBrightness = "1";
-   Enabled = "1";
-   diffuseSize = "400";
-   useSideProjection = "0";
+   enabled = "1";
+   detailStrength = "1";
+   parallaxScale = "0";
+   normalMap = "art/terrains/TT_Materials/Stone and Rock/TT_Rock_14_Nm";
 };
+
 // ----------------------------------------------------------------------------
 // Sample sand
 // ----------------------------------------------------------------------------
 
-singleton Material(TerrainFX_sand)
+singleton Material()
 {
    mapTo = "sand";
    footstepSoundId = "3";
@@ -198,25 +170,87 @@ singleton Material(TerrainFX_sand)
    specularPower[0] = "1";
    effectColor[0] = "0.84 0.71 0.5 1";
    effectColor[1] = "0.84 0.71 0.5 0.349";
+   diffuseMap = "art/terrains/TT_Materials/Sand/TT_Sand_01_Dif";
+   diffuseSize = "500";
+   normalMap = "art/terrains/TT_Materials/Sand/TT_Sand_01_Nm";
+   detailMap = "art/terrains/TT_Materials/Sand/TT_Sand_01";
+   detailSize = "5";
+   detailDistance = "50";
+   internalName = "sand_01";
+   isManaged = "1";
+   detailBrightness = "1";
+   enabled = "1";
+   parallaxScale = "0";
+   detailStrength = "1";
 };
+
 
 new TerrainMaterial()
 {
-   internalName = "sand";
-   diffuseMap = "art/terrains/Example/sand";
-   detailMap = "art/terrains/Example/sand_d";
-   detailSize = "10";
-   detailDistance = "100";
-   isManaged = "1";
-   detailBrightness = "1";
-   Enabled = "1";
-   diffuseSize = "200";
+   diffuseMap = "art/terrains/TT_Materials/Stone and Rock/TT_Rock_14_Dif";
+   normalMap = "art/terrains/TT_Materials/Stone and Rock/TT_Rock_14_Nm";
+   internalName = "warning_material";
+   detailMap = "art/terrains/TT_Materials/Stone and Rock/TT_Rock_14";
 };
 
 new TerrainMaterial()
 {
    diffuseMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02_Dif";
    normalMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02_Nm";
-   internalName = "warning_material";
    detailMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02";
+   internalName = "gravel_02";
+   detailSize = "2";
+};
+
+new TerrainMaterial()
+{
+   diffuseMap = "art/terrains/TT_Materials/Grass and Moss/TT_Grass_01_Dif";
+   diffuseSize = "200";
+   normalMap = "art/terrains/TT_Materials/Grass and Moss/TT_Grass_01_Nm";
+   detailMap = "art/terrains/TT_Materials/Grass and Moss/TT_Grass_01";
+   detailSize = "2";
+   internalName = "grass_01";
+   isManaged = "1";
+   detailBrightness = "1";
+   enabled = "1";
+};
+
+new TerrainMaterial()
+{
+   diffuseMap = "art/terrains/TT_Materials/Grass and Moss/TT_Grass_20_Dif";
+   diffuseSize = "200";
+   normalMap = "art/terrains/TT_Materials/Grass and Moss/TT_Grass_20_Nm";
+   detailMap = "art/terrains/TT_Materials/Grass and Moss/TT_Grass_20";
+   detailSize = "1.2";
+   internalName = "grass_20";
+   isManaged = "1";
+   detailBrightness = "1";
+   enabled = "1";
+};
+
+new TerrainMaterial()
+{
+   diffuseMap = "art/terrains/TT_Materials/Snow and Ice/TT_Snow_01_Dif";
+   normalMap = "art/terrains/TT_Materials/Snow and Ice/TT_Snow_01_Nm";
+   detailMap = "art/terrains/TT_Materials/Snow and Ice/TT_Snow_01";
+   detailSize = "1";
+   internalName = "snow_01";
+};
+
+new TerrainMaterial()
+{
+   diffuseMap = "art/terrains/TT_Materials/Mud and Mulch/TT_Mud_07_Dif";
+   normalMap = "art/terrains/TT_Materials/Mud and Mulch/TT_Mud_07_Nm";
+   detailMap = "art/terrains/TT_Materials/Mud and Mulch/TT_Mud_07";
+   detailSize = "1";
+   internalName = "mud_07";
+};
+
+new TerrainMaterial()
+{
+   diffuseMap = "art/terrains/TT_Materials/Mud and Mulch/TT_Mud_14_Dif";
+   normalMap = "art/terrains/TT_Materials/Mud and Mulch/TT_Mud_14_Nm";
+   detailMap = "art/terrains/TT_Materials/Mud and Mulch/TT_Mud_14";
+   detailSize = "1";
+   internalName = "mud_14";
 };

@@ -1,12 +1,12 @@
 //--- OBJECT WRITE BEGIN ---
-new Root(testTree) {
+new Root(baseTree) {
    canSave = "1";
    canSaveDynamicFields = "1";
 
-   new ScriptedBehavior(testBehave) {
+   new ScriptedBehavior() {
       preconditionMode = "ONCE";
-      internalName = "testing tree";
-      class = "testBehaveTask";
+      internalName = "findGroundBehavior";
+      class = "findGround";
       canSave = "1";
       canSaveDynamicFields = "1";
    };

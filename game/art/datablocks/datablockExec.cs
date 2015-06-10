@@ -64,3 +64,4 @@ exec("./aiPlayer.cs");
 
 // Load the vehicle datablocks
 exec("./vehicles/cheetahCar.cs");
+exec("./vehicles/warsparrow.cs");
