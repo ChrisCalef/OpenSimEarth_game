@@ -10,6 +10,7 @@ game/scripts/client/config.cs
 game/scripts/client/prefs.cs
 game/scripts/server/banlist.cs
 game/scripts/server/prefs.cs
+game/art/terrains/terrainFiles/*
 *.log
 *.db
 *.user

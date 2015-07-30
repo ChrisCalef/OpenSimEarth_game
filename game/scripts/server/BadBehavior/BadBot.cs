@@ -545,6 +545,32 @@ function PhysicsShape::say(%this, %message)//Testing, does this only work for AI
 }
 
 
+function onStartup::precondition(%this, %obj)
+{
+   if (%obj.startedUp != true)
+      return true;
+   else
+      return false;
+}
+
+function onStartup::behavior(%this, %obj)
+{
+   echo("calling onStartup!");   
+   
+   %obj.setAmbientSeqByName("ambient");
+   %obj.setIdleSeqByName("ambient");
+   %obj.setWalkSeqByName("walk");
+   %obj.setRunSeqByName("run");
+   %obj.setAttackSeqByName("power_punch_down");
+   %obj.setBlockSeqByName("tpose");
+   %obj.setFallSeqByName("ambient");
+   %obj.setGetupSeqByName("rSideGetup");
+   
+   %obj.groundMove();
+   
+   %obj.startedUp = true;
+   return SUCCESS;   
+}
 
 ////////////// BEHAVIORS ///////////////////////////////
 
@@ -618,9 +644,8 @@ function findTarget::behavior(%this, %obj)
    initContainerRadiusSearch( %obj.position, %db.findItemRange, %db.itemObjectTypes );
    while ( (%item = containerSearchNext()) != 0 )
    {
-      // filter out irrelevant items -- temp
-      if(%item.dataBlock.category !$= "Health" || !%item.isEnabled() || %item.isHidden())
-         continue;
+      if (%item.dataBlock.category $= "Health" && %item.isEnabled() && !%item.isHidden())
+      {
       
       %diff = VectorSub(%obj.position,%item.position);
       

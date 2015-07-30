@@ -7,12 +7,20 @@ new Root(baseTree) {
       canSave = "1";
       canSaveDynamicFields = "1";
 
-      new ScriptFunc() {
-         func = "onStartup";
-         defaultReturnStatus = "SUCCESS";
+      //new ScriptFunc() {
+         //func = "onStartup";
+         //defaultReturnStatus = "SUCCESS";
+         //canSave = "1";
+         //canSaveDynamicFields = "1";
+      //};
+
+      new ScriptedBehavior() {
+         preconditionMode = "TICK";
+         internalName = "on startup";
+         class = "onStartup";
          canSave = "1";
          canSaveDynamicFields = "1";
-      };
+      };      
       new SubTree() {
          subTreeName = "goToTargetTree";
          internalName = "go to target";

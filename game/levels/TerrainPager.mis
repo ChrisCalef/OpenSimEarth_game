@@ -120,19 +120,8 @@ new SimGroup(MissionGroup) {
       static = "1";
       rotate = "1";
       isAIControlled = "0";
-      dataBlock = "LurkerAmmo";
-      position = "377.443 6549 195.357";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-   };
-   new Item() {
-      static = "1";
-      rotate = "1";
-      isAIControlled = "0";
       dataBlock = "RyderAmmo";
-      position = "374.214 6548.17 195.519";
+      position = "1820 1840 141";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       canSave = "1";
@@ -143,20 +132,11 @@ new SimGroup(MissionGroup) {
       rotate = "1";
       isAIControlled = "0";
       dataBlock = "HealthKitPatch";
-      position = "1820 1796 141";
+      position = "1820 1780 142";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       canSave = "1";
       canSaveDynamicFields = "1";
-   };
-   new Forest(theForest) {
-      position = "0 0 0";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-      dataFile = "levels/TerrainPager2.forest";
-      lodReflectScalar = "2";
    };
    new GroundPlane() {
       squareSize = "128";
@@ -186,7 +166,7 @@ new SimGroup(MissionGroup) {
    new TerrainPager(theTP) {
       mapCenterLongitude = "-123.1";
       mapCenterLatitude = "44";
-      tileLoadRadius = "10000";
+      tileLoadRadius = "12000";
       tileDropRadius = "80000";
       skyboxRes = "800";
       useDataSource = "0";
@@ -194,5 +174,14 @@ new SimGroup(MissionGroup) {
       canSave = "1";
       canSaveDynamicFields = "1";
    };
+   //new Forest(theForest) {
+      //position = "0 0 0";
+      //rotation = "1 0 0 0";
+      //scale = "1 1 1";
+      //canSave = "1";
+      //canSaveDynamicFields = "1";
+      //dataFile = "levels/TerrainPager2.forest";
+      //lodReflectScalar = "2";
+   //};
 };
 //--- OBJECT WRITE END ---

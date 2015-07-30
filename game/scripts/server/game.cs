@@ -392,7 +392,7 @@ function makeM4(%start)
   
    //%start = "0 0 0.1";
    //%start = "415 6515 195";
-   %start = "1800 1820 140";
+   %start = "1800 1820 188";//140 // taking them far off the ground, and then automating the behavior trees for now, so we don't see the T Pose.
    $m4 = new PhysicsShape() {
       playAmbient = %ambient;
       dataBlock = "M4Physics";
@@ -412,6 +412,7 @@ function makeM4(%start)
    MissionGroup.add($m4); 
    
    
+   /*
    
    //%start = "3 -3 1";
    %start = "1805 1820 140";
@@ -433,7 +434,6 @@ function makeM4(%start)
    };
    MissionGroup.add($m5); 
    
-   /*
    //%start = "-3 3 1";
    %start = "425 6515 195";
    $m6 = new PhysicsShape() {
@@ -637,7 +637,7 @@ function m4D()
    //$m7.setDynamic(1); 
    
    $m4.setBehavior("baseTree");     
-   $m5.setBehavior("baseTree");  
+   //$m5.setBehavior("baseTree");  
 
    /*
    $m6.setBehavior("baseTree");  

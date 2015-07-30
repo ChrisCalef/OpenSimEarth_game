@@ -57,5 +57,77 @@ new SimGroup(ForestBrushGroup) {
             clumpRadius = "10";
       };
    };
+   new ForestBrush() {
+      internalName = "SequoiaBrush";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      new ForestBrushElement() {
+         internalName = "SequoiaElement";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+         ForestItemData = "SequiaForestMesh";
+         probability = "1";
+         rotationRange = "360";
+         scaleMin = "1";
+         scaleMax = "1";
+         scaleExponent = "1";
+         sinkMin = "0";
+         sinkMax = "0";
+         sinkRadius = "1";
+         slopeMin = "0";
+         slopeMax = "90";
+         elevationMin = "-10000";
+         elevationMax = "10000";
+      };
+   };
+   new ForestBrush() {
+      internalName = "ShortPineBrush";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      new ForestBrushElement() {
+         internalName = "ShortPineElement";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+         ForestItemData = "ShortPineForestMesh";
+         probability = "1";
+         rotationRange = "360";
+         scaleMin = "1";
+         scaleMax = "1";
+         scaleExponent = "1";
+         sinkMin = "0";
+         sinkMax = "0";
+         sinkRadius = "1";
+         slopeMin = "0";
+         slopeMax = "90";
+         elevationMin = "-10000";
+         elevationMax = "10000";
+      };
+   };
+   new ForestBrush() {
+      internalName = "ScrubPineBrush";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      new ForestBrushElement() {
+         internalName = "ScrubPineElement";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+         ForestItemData = "ScrubPineForestMesh";
+         probability = "1";
+         rotationRange = "360";
+         scaleMin = "1";
+         scaleMax = "1";
+         scaleExponent = "1";
+         sinkMin = "0";
+         sinkMax = "0";
+         sinkRadius = "1";
+         slopeMin = "0";
+         slopeMax = "90";
+         elevationMin = "-10000";
+         elevationMax = "10000";
+      };
+   };
 };
 //--- OBJECT WRITE END ---

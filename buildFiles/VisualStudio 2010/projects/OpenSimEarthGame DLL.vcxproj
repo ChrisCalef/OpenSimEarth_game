@@ -250,6 +250,9 @@
     <ClCompile Include="..\..\..\..\..\Engine\source\BadBehavior\leaf\WaitForSignal.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\BadBehavior\tools\BTUndoActions.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\BadBehavior\tools\guiBTViewCtrl.cpp" />
+    <ClCompile Include="..\..\..\..\..\Engine\source\console\test\consoleTest.cpp" />
+    <ClCompile Include="..\..\..\..\..\Engine\source\console\test\engineAPITest.cpp" />
+    <ClCompile Include="..\..\..\..\..\Engine\source\gui\core\guiOffscreenCanvas.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\navigation\coverPoint.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\navigation\guiNavEditorCtrl.cpp" />
     <ClCompile Include="..\..\..\..\..\Engine\source\navigation\navContext.cpp" />
@@ -288,9 +291,11 @@
     <ClInclude Include="..\..\..\..\..\Engine\source\BadBehavior\leaf\WaitForSignal.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\BadBehavior\tools\BTUndoActions.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\BadBehavior\tools\guiBTViewCtrl.h" />
+    <ClInclude Include="..\..\..\..\..\Engine\source\gui\core\guiOffscreenCanvas.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\navigation\coverPoint.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\navigation\guiNavEditorCtrl.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\navigation\navContext.h" />
+    <ClInclude Include="..\..\..\..\..\Engine\source\platformWin32\stdint.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\sim\dataSource\dataSource.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\sim\dataSource\vehicleDataSource.h" />
     <ClInclude Include="..\..\..\..\..\Engine\source\sim\dataSource\worldDataSource.h" />
