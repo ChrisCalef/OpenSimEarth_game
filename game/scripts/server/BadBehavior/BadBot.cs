@@ -352,7 +352,7 @@ function getHealthTask::onEnter(%this, %obj)
    // move to the item
    %obj.moveTo(%obj.targetItem);  
    //%obj.orientToPos(%obj.targetItem.position);
-   //%obj.seqRun();
+
 }
 
 function getHealthTask::behavior(%this, %obj)
@@ -502,14 +502,24 @@ function PhysicsShape::onStartup(%this)
 {
    echo(%this @ " calling onStartup!");
    
-   %this.setAmbientSeqByName("ambient");
-   %this.setIdleSeqByName("ambient");
-   %this.setWalkSeqByName("walk");
-   %this.setRunSeqByName("run");
-   %this.setAttackSeqByName("power_punch_down");
-   %this.setBlockSeqByName("tpose");
-   %this.setFallSeqByName("ambient");
-   %this.setGetupSeqByName("rSideGetup");
+   //TEMP, turn these into actionSequences in the db.
+   //%this.setAmbientSeqByName("ambient");
+   //%this.setIdleSeqByName("ambient");
+   //%this.setWalkSeqByName("walk");
+   //%this.setRunSeqByName("run");
+   //%this.setAttackSeqByName("power_punch_down");
+   //%this.setBlockSeqByName("tpose");
+   //%this.setFallSeqByName("ambient");
+   //%this.setGetupSeqByName("rSideGetup");
+   
+   %this.setActionSeq("ambient","ambient");//This might not always be idle, could be just breathing
+   %this.setActionSeq("idle","ambient");// and idle could be that plus fidgeting, etc.
+   %this.setActionSeq("walk","walk");
+   %this.setActionSeq("run","run");
+   %this.setActionSeq("fall","runscerd");
+   %this.setActionSeq("getup","rSideGetup");   
+   %this.setActionSeq("attack","power_punch_down");
+   %this.setActionSeq("block","punch_uppercut");//TEMP, don't have any blocking anims atm
    
    %this.groundMove();
 }
@@ -531,8 +541,7 @@ function PhysicsShape::moveTo(%this, %dest, %slowDown)
    
    %this.orientToPos(%pos);
    
-   %this.seqWalk();
-   //%this.seqRun();
+   %this.actionSeq("walk");
    
    //%obj.atDestination = false;
 }
@@ -555,20 +564,26 @@ function onStartup::precondition(%this, %obj)
 
 function onStartup::behavior(%this, %obj)
 {
-   echo("calling onStartup!");   
+   //echo("calling onStartup!");   
    
+   //Temp, store these in DB by shape and/or sceneShape
    %obj.setAmbientSeqByName("ambient");
    %obj.setIdleSeqByName("ambient");
-   %obj.setWalkSeqByName("walk");
+   %obj.setWalkSeqByName("ambient");
    %obj.setRunSeqByName("run");
    %obj.setAttackSeqByName("power_punch_down");
-   %obj.setBlockSeqByName("tpose");
+   %obj.setBlockSeqByName("tpose");//TEMP, need block seq
    %obj.setFallSeqByName("ambient");
    %obj.setGetupSeqByName("rSideGetup");
+   //Possibly these should not be named actions but should all be included in 
+   //a sequenceActions table so it can be infinitely expanded.
    
+   //Should this be automatic here, 
    %obj.groundMove();
+   //or wait until we find out if we're more than just a ragdoll?
    
    %obj.startedUp = true;
+   
    return SUCCESS;   
 }
 
@@ -631,33 +646,3 @@ function moveToPosition::behavior(%this, %obj)
    return SUCCESS;   
 }
 
-
-//=============================================================================
-// findTarget task
-//=============================================================================
-function findTarget::behavior(%this, %obj)
-{
-   // get the objects datablock
-   %db = %obj.dataBlock;
-   //echo(%this.getId() @ " trying to find target!");
-   // do a container search for items
-   initContainerRadiusSearch( %obj.position, %db.findItemRange, %db.itemObjectTypes );
-   while ( (%item = containerSearchNext()) != 0 )
-   {
-      if (%item.dataBlock.category $= "Health" && %item.isEnabled() && !%item.isHidden())
-      {
-      
-      %diff = VectorSub(%obj.position,%item.position);
-      
-      // check that the item is within the bots view cone
-      //if(%obj.checkInFov(%item, %db.visionFov))
-      if (true)// (We don't have a checkInFov for physicsShapes yet)
-      {
-         // set the targetItem field on the bot
-         %obj.targetItem = %item;
-         break;
-      }
-   }
-   
-   return isObject(%obj.targetItem) ? SUCCESS : FAILURE;
-}

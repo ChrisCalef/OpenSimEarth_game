@@ -14,6 +14,7 @@ new Root(goToTargetTree) {
          canSave = "1";
          canSaveDynamicFields = "1";
       };
+      
       //new Loop() {
          //numLoops = "0";
          //terminationPolicy = "ON_SUCCESS";
@@ -32,6 +33,37 @@ new Root(goToTargetTree) {
 };
 //--- OBJECT WRITE END ---
 
+//=============================================================================
+// findTarget task
+//=============================================================================
+function findTarget::behavior(%this, %obj)
+{
+   // get the objects datablock
+   %db = %obj.dataBlock;
+   %category = %obj.targetType;
+   echo(%this.getId() @ " trying to find target: " @ %obj.targetType);
+   // do a container search for items
+   initContainerRadiusSearch( %obj.position, %db.findItemRange, %db.itemObjectTypes );
+   while ( (%item = containerSearchNext()) != 0 )
+   {
+      if (%item.dataBlock.category $= %category && %item.isEnabled() && !%item.isHidden())
+      {      
+         %diff = VectorSub(%obj.position,%item.position);
+      
+         // check that the item is within the bots view cone
+         //if(%obj.checkInFov(%item, %db.visionFov))
+         if (true)// (We don't have a checkInFov for physicsShapes yet)
+         {
+            // set the targetItem field on the bot
+            %obj.targetItem = %item;
+            break;
+         }
+      }
+   }
+   
+   return isObject(%obj.targetItem) ? SUCCESS : FAILURE;
+}
+
 
 //=============================================================================
 // goToTarget task
@@ -44,10 +76,10 @@ function goToTarget::precondition(%this, %obj)
 
 function goToTarget::onEnter(%this, %obj)
 {
-   // move to the item
    %obj.moveTo(%obj.targetItem);  
+   %obj.actionSeq("run");
    //%obj.orientToPos(%obj.targetItem.position);
-   //%obj.seqRun();
+
 }
 
 function goToTarget::behavior(%this, %obj)

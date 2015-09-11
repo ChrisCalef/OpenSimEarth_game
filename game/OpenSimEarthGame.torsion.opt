@@ -6,24 +6,16 @@
 <Breakpoints/>
 <Bookmarks/>
 <OpenFiles>
-<File ScrollX="0" ScrollY="14">art\datablocks\datablockExec.cs</File>
-<File ScrollX="0" ScrollY="624">scripts\server\game.cs</File>
-<File ScrollX="0" ScrollY="137">levels\TerrainPager.mis</File>
-<File ScrollX="0" ScrollY="226">scripts\server\weapon.cs</File>
-<File ScrollX="0" ScrollY="192">art\datablocks\physicsShape.cs</File>
-<File ScrollX="0" ScrollY="493">scripts\server\gameCore.cs</File>
-<File ScrollX="0" ScrollY="646">scripts\client\default.bind.cs</File>
-<File ScrollX="0" ScrollY="0">scripts\server\vehicle.cs</File>
+<File ScrollX="0" ScrollY="48">scripts\server\game.cs</File>
+<File ScrollX="0" ScrollY="647">scripts\client\default.bind.cs</File>
 <File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\baseTree.cs</File>
-<File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\goToTargetTree.cs</File>
-<File ScrollX="0" ScrollY="589">scripts\server\BadBehavior\BadBot.cs</File>
-<File ScrollX="0" ScrollY="110">levels\Empty Room.mis</File>
-<File ScrollX="0" ScrollY="0">scripts\client\audioData.cs</File>
-<File ScrollX="0" ScrollY="0">scripts\client\chatHud.cs</File>
-<File ScrollX="0" ScrollY="18">scripts\client\client.cs</File>
-<File ScrollX="0" ScrollY="0">scripts\client\prefs.cs</File>
-<File ScrollX="0" ScrollY="75">scripts\client\serverConnection.cs</File>
-<File ScrollX="0" ScrollY="18" Active="true">scripts\server\scriptExec.cs</File>
-<File ScrollX="0" ScrollY="0">scripts\server\shapeBase.cs</File>
+<File ScrollX="0" ScrollY="55">scripts\server\BadBehavior\behaviorTrees\goToTargetTree.cs</File>
+<File ScrollX="0" ScrollY="510" Active="true">scripts\server\BadBehavior\BadBot.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\m4_optimized\M4.cs</File>
+<File ScrollX="0" ScrollY="207">scripts\server\openSimEarth.cs</File>
+<File ScrollX="0" ScrollY="107">levels\Empty Room.mis</File>
+<File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\dropAndRoll.cs</File>
+<File ScrollX="0" ScrollY="22">scripts\server\BadBehavior\behaviorTrees\botTree.cs</File>
+<File ScrollX="0" ScrollY="487">art\datablocks\player.cs</File>
 </OpenFiles>
 </TorsionProjectOptions>

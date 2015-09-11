@@ -105,7 +105,9 @@ function onStart()
    // Server gets loaded for all sessions, since clients
    // can host in-game servers.
    initServer();
-
+      
+   startSQL($pref::OpenSimEarthDB);//OpenSimEarth
+   
    // Start up in either client, or dedicated server mode
    if ($Server::Dedicated)
       initDedicated();

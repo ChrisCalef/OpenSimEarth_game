@@ -524,9 +524,9 @@ datablock PlayerData(DefaultPlayerData)
    runForce = 4320;
    runEnergyDrain = 0;
    minRunEnergy = 0;
-   maxForwardSpeed = 8;
-   maxBackwardSpeed = 6;
-   maxSideSpeed = 6;
+   maxForwardSpeed = 28;
+   maxBackwardSpeed = 26;
+   maxSideSpeed = 26;
 
    sprintForce = 4320;
    sprintEnergyDrain = 0;
@@ -549,7 +549,7 @@ datablock PlayerData(DefaultPlayerData)
    maxUnderwaterBackwardSpeed = 7.8;
    maxUnderwaterSideSpeed = 4.0;
 
-   jumpForce = "747";
+   jumpForce = "1200";
    jumpEnergyDrain = 0;
    minJumpEnergy = 0;
    jumpDelay = "15";

@@ -137,6 +137,11 @@ package Tools
          // if this is the web tool demo lets init some value storage
          //$clicks
       }
+      
+      
+      openSimEarthGUIs();//Do the loadup of GUI controls here, now that all the editors have been loaded. 
+   
+   
    }
    
    function startToolTime(%tool)

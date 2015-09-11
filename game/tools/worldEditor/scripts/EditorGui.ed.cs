@@ -267,6 +267,9 @@ function EditorGui::init(%this)
    
    // Done.
    
+   //And now, OpenSimEarth GUI elements need to be set up.
+   openSimEarthGUIs();//OpenSimEarth
+   
    %this.isInitialized = true;
 }
 

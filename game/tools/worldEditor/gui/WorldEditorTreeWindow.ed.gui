@@ -91,6 +91,7 @@
             text = "Scene";
             maxLength = "1024";
 
+
             new GuiTextEditCtrl( EditorTreeFilter ) {
                position = "2 4";
                extent = "175 18";
@@ -121,6 +122,74 @@
                class = "GuiTreeViewFilterClearButton";
                textCtrl = EditorTreeFilter;
             };
+            new GuiPopUpMenuCtrl(DatabaseSceneList) {
+               canSaveDynamicFields = "0";
+               isContainer = "0";
+               Profile = "EcstasyPopUpProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               Position = "2 25";
+               Extent = "160 18";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               //Command = "loadScene();";
+               tooltipprofile = "GuiToolTipProfile";
+               hovertime = "1000";
+               Margin = "0 0 0 0";
+               Padding = "0 0 0 0";
+               AnchorTop = "1";
+               AnchorBottom = "0";
+               AnchorLeft = "1";
+               AnchorRight = "0";
+               text = "";
+               maxLength = "1024";
+               maxPopupHeight = "200";
+               sbUsesNAColor = "1";
+               reverseTextList = "0";
+               bitmapBounds = "16 16";
+            };              
+            new GuiButtonCtrl() {
+               canSaveDynamicFields = "0";
+               isContainer = "0";
+               Profile = "EcstasyButtonProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               Position = "168 25";
+               Extent = "15 18";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               Command = "loadScene(DatabaseSceneList.getSelected());";
+               tooltipprofile = "GuiToolTipProfile";
+               hovertime = "1000";
+               text = "+";                           
+               buttonType = "PushButton";
+               useMouseEvents = "0";
+               internalName = "DatabaseSceneLoadButton";
+               ToolTip = "Add Scene";
+            };           
+            new GuiButtonCtrl() {
+               canSaveDynamicFields = "0";
+               isContainer = "0";
+               Profile = "EcstasyButtonProfile";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               Position = "186 25";
+               Extent = "15 18";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               Command = "unloadScene(DatabaseSceneList.getSelected());";
+               tooltipprofile = "GuiToolTipProfile";
+               hovertime = "1000";
+               text = "-";                           
+               buttonType = "PushButton";
+               useMouseEvents = "0";
+               internalName = "DatabaseSceneUnloadButton";
+               ToolTip = "Subtract Scene";
+            };
+
                               
             new GuiScrollCtrl() {
                canSaveDynamicFields = "0";
@@ -129,8 +198,8 @@
                Profile = "ToolsGuiScrollProfile";
                HorizSizing = "width";
                VertSizing = "height";
-               Position = "0 25";
-               Extent = "197 246";
+               Position = "0 50";
+               Extent = "197 221";
                MinExtent = "8 8";
                canSave = "1";
                Visible = "1";
