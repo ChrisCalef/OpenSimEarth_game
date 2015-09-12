@@ -79,7 +79,6 @@ function goToTarget::onEnter(%this, %obj)
    %obj.moveTo(%obj.targetItem);  
    %obj.actionSeq("run");
    //%obj.orientToPos(%obj.targetItem.position);
-
 }
 
 function goToTarget::behavior(%this, %obj)

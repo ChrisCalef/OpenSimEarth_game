@@ -9,13 +9,15 @@
 <File ScrollX="0" ScrollY="48">scripts\server\game.cs</File>
 <File ScrollX="0" ScrollY="647">scripts\client\default.bind.cs</File>
 <File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\baseTree.cs</File>
-<File ScrollX="0" ScrollY="55">scripts\server\BadBehavior\behaviorTrees\goToTargetTree.cs</File>
-<File ScrollX="0" ScrollY="510" Active="true">scripts\server\BadBehavior\BadBot.cs</File>
+<File ScrollX="0" ScrollY="12">scripts\server\BadBehavior\behaviorTrees\goToTargetTree.cs</File>
+<File ScrollX="0" ScrollY="513">scripts\server\BadBehavior\BadBot.cs</File>
 <File ScrollX="0" ScrollY="0">art\shapes\m4_optimized\M4.cs</File>
-<File ScrollX="0" ScrollY="207">scripts\server\openSimEarth.cs</File>
-<File ScrollX="0" ScrollY="107">levels\Empty Room.mis</File>
+<File ScrollX="0" ScrollY="116" Active="true">scripts\server\openSimEarth.cs</File>
+<File ScrollX="0" ScrollY="104">levels\Empty Room.mis</File>
 <File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\dropAndRoll.cs</File>
-<File ScrollX="0" ScrollY="22">scripts\server\BadBehavior\behaviorTrees\botTree.cs</File>
+<File ScrollX="0" ScrollY="19">scripts\server\BadBehavior\behaviorTrees\botTree.cs</File>
 <File ScrollX="0" ScrollY="487">art\datablocks\player.cs</File>
+<File ScrollX="0" ScrollY="0">scripts\main.cs</File>
+<File ScrollX="0" ScrollY="78">tools\worldEditor\main.cs</File>
 </OpenFiles>
 </TorsionProjectOptions>

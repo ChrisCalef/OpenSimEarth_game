@@ -322,14 +322,14 @@ function findHealthTask::behavior(%this, %obj)
          continue;
       
       %diff = VectorSub(%obj.position,%item.position);
-      echo("found a health! " @ %item.position @ " distance " @ VectorLen(%diff));
+      //echo("found a health! " @ %item.position @ " distance " @ VectorLen(%diff));
       // check that the item is within the bots view cone
       //if(%obj.checkInFov(%item, %db.visionFov))
       if (true)//also don't have a checkInFov for physicsShapes yet
       {
          // set the targetItem field on the bot
          %obj.targetItem = %item;
-         echo("found a health in view! " @ %item.position);
+         //echo("found a health in view! " @ %item.position);
          break;
       }
    }
@@ -537,7 +537,7 @@ function PhysicsShape::moveTo(%this, %dest, %slowDown)
    //This is how you print messages to the chat gui instead of the console:
    //%this.say("moving to " @ %pos);
    
-   echo(%this.getId() @ " moving to " @ %pos);
+   //echo(%this.getId() @ " moving to " @ %pos);
    
    %this.orientToPos(%pos);
    
@@ -641,7 +641,7 @@ function getUp::behavior(%this, %obj)
 
 function moveToPosition::behavior(%this, %obj)
 {
-   echo("calling move to position!");
+   //echo("calling move to position!");
    %obj.groundMove();
    return SUCCESS;   
 }

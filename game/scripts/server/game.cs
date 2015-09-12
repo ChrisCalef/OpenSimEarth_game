@@ -75,7 +75,7 @@ function onServerDestroyed()
 
    physicsDestroyWorld( "server" );
 
-   stopSQL();//OpenSimEarth
+   //stopSQL();//OpenSimEarth //Hm, this gets called too early apparently...?
    
    // Clean up the GameCore package here as it persists over the
    // life of the server.

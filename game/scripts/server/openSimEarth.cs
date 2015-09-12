@@ -34,13 +34,13 @@ function openSimEarthGUIs()
          %id = sqlite.getColumn(%result, "id");        
          %name = sqlite.getColumn(%result, "name");
          %descrip = sqlite.getColumn(%result, "description"); 
-         echo("Found a scene: " @ %id @ " " @ %name @ " : " @ %descrip );
          
          DatabaseSceneList.add(%name,%id);
          
          sqlite.nextRow(%result);
       }
    } 
+   sqlite.clearResult(%result);
 }
 
 
@@ -108,7 +108,9 @@ function loadScene(%scene_id)
          
          MissionGroup.add(%temp);   
          SceneShapes.add(%temp);   
-                
+         echo("Adding a scene shape: " @ %sceneShape_id @ ", sceneShapes count " @ SceneShapes.getCount() @
+                  " sceneID " @ %scene_id);
+         
          if (strlen(%behaviorTree)>0)
          {
             %temp.schedule(30,"setBehavior",%behaviorTree);
@@ -118,13 +120,33 @@ function loadScene(%scene_id)
          sqlite.nextRow(%result);
       }
    }   
+   sqlite.clearResult(%result);
    //schedule(40, 0, "startRecording");
 } 
 
 function unloadScene(%scene_id)
 {
    //HERE: look up all the sceneShapes from the scene in question, and drop them all from the current mission.
-   
+   %shapesCount = SceneShapes.getCount();
+   for (%i=0;%i<%shapesCount;%i++)
+   {
+      %shape = SceneShapes.getObject(%i);  
+      echo("shapesCount " @ %shapesCount @ ", sceneShape id " @ %shape.sceneShapeID @ 
+               " scene " @ %shape.sceneID ); 
+      if (%shape.sceneID==%scene_id)
+      {
+         echo("deleting a scene shape: " @ %shape.sceneShapeID);         
+         MissionGroup.remove(%shape);
+         SceneShapes.remove(%shape);//Wuh oh... removing from SceneShapes shortens the array...
+         %shape.delete();//Maybe??
+         
+         %shapesCount = SceneShapes.getCount();
+         if (%shapesCount>0)
+            %i=-1;//So start over every time we remove one, until we loop through and remove none.
+         else 
+            %i=1;//Or else we run out of shapes, and just need to exit the loop.         
+      }
+   }   
 }
 
 
@@ -288,6 +310,7 @@ function makeStreets()
       }
    } else echo ("no results.");
    
+   mapDB.clearResult(%result);
    mapDB.closeDatabase();
    mapDB.delete();
 }
