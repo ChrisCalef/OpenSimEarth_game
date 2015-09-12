@@ -1,8 +1,10 @@
 
 
-//-----------------------------------------------------------------------------
-// OpenSimEarth
-//-----------------------------------------------------------------------------
+//=============================================================================
+//
+//                 OPEN SIM EARTH
+//
+//=============================================================================
 
 function startSQL(%dbname)
 {//Create the sqlite object that we will use in all the scripts.
@@ -20,6 +22,156 @@ function stopSQL()
    sqlite.closeDatabase();
    sqlite.delete();      
 }
+
+
+function PhysicsShape::onStartup(%this)
+{
+   echo(%this @ " calling onStartup!");
+   
+   //TEMP, turn these into actionSequences in the db.
+   //%this.setAmbientSeqByName("ambient");
+   //%this.setIdleSeqByName("ambient");
+   //%this.setWalkSeqByName("walk");
+   //%this.setRunSeqByName("run");
+   //%this.setAttackSeqByName("power_punch_down");
+   //%this.setBlockSeqByName("tpose");
+   //%this.setFallSeqByName("ambient");
+   //%this.setGetupSeqByName("rSideGetup");
+   
+   %this.setActionSeq("ambient","ambient");//This might not always be idle, could be just breathing
+   %this.setActionSeq("idle","ambient");// and idle could be that plus fidgeting, etc.
+   %this.setActionSeq("walk","walk");
+   %this.setActionSeq("run","run");
+   %this.setActionSeq("fall","runscerd");
+   %this.setActionSeq("getup","rSideGetup");   
+   %this.setActionSeq("attack","power_punch_down");
+   %this.setActionSeq("block","punch_uppercut");//TEMP, don't have any blocking anims atm
+   
+   %this.groundMove();
+}
+
+function PhysicsShape::orientTo(%this, %dest)
+{
+   %pos = isObject(%dest) ? %dest.getPosition() : %dest;
+   %this.orientToPos(%pos);
+}
+
+function PhysicsShape::moveTo(%this, %dest, %slowDown)
+{
+   %pos = isObject(%dest) ? %dest.getPosition() : %dest;
+   
+   //This is how you print messages to the chat gui instead of the console:
+   //%this.say("moving to " @ %pos);
+   
+   //echo(%this.getId() @ " moving to " @ %pos);
+   
+   %this.orientToPos(%pos);
+   
+   %this.actionSeq("walk");
+   
+   //%obj.atDestination = false;
+}
+
+
+
+function PhysicsShape::say(%this, %message)//Testing, does this only work for AIPlayers?
+{
+   chatMessageAll(%this, '\c3%1: %2', %this.getid(), %message);  
+}
+
+
+function onStartup::precondition(%this, %obj)
+{
+   if (%obj.startedUp != true)
+      return true;
+   else
+      return false;
+}
+
+function onStartup::behavior(%this, %obj)
+{
+   //echo("calling onStartup!");   
+   
+   //Temp, store these in DB by shape and/or sceneShape
+   %obj.setAmbientSeqByName("ambient");
+   %obj.setIdleSeqByName("ambient");
+   %obj.setWalkSeqByName("ambient");
+   %obj.setRunSeqByName("run");
+   %obj.setAttackSeqByName("power_punch_down");
+   %obj.setBlockSeqByName("tpose");//TEMP, need block seq
+   %obj.setFallSeqByName("ambient");
+   %obj.setGetupSeqByName("rSideGetup");
+   //Possibly these should not be named actions but should all be included in 
+   //a sequenceActions table so it can be infinitely expanded.
+   
+   //Should this be automatic here, 
+   %obj.groundMove();
+   //or wait until we find out if we're more than just a ragdoll?
+   
+   %obj.startedUp = true;
+   
+   return SUCCESS;   
+}
+
+////////////// BEHAVIORS ///////////////////////////////
+
+///////////////////////////////////
+//[behaviorName]::precondition()
+//[behaviorName]::onEnter()
+//[behaviorName]::onExit()
+
+//Do a raycast, either torque or physx, and find the ground directly below me.
+//if below some threshold, then just move/interpolate us there. If above that, go to
+//falling animation and/or ragdoll until we hit the ground and stop, then go to getUp task.
+
+/* // No longer necessary... this is now done during processTick.
+function goToGround::behavior(%this, %obj)
+{
+   %start = VectorAdd(%obj.position,"0 0 1.0");//Add a tiny bit (or, a huge amount)
+                // so we don't get an error when we're actually on the ground.
+                
+   %contact = physx3CastGroundRay(%start);
+   
+   %obj.setPosition(%contact);
+   echo(%this @ " is going to ground!!!!!!");
+   %obj.setAmbientSeqByName("ambient");
+   %obj.setIdleSeqByName("ambient");
+   %obj.setWalkSeqByName("walk");
+   %obj.setRunSeqByName("run");
+   %obj.setAttackSeqByName("power_punch_down");
+   %obj.setBlockSeqByName("tpose");
+   %obj.setFallSeqByName("ambient");
+   %obj.setGetupSeqByName("rSideGetup");
+   
+   return SUCCESS;
+}
+*/
+
+///////////////////////////////////
+//getUp::precondition()
+//getUp::onEnter()
+//getUp::onExit()
+
+function getUp::behavior(%this, %obj)
+{
+   
+   return SUCCESS;
+}
+
+///////////////////////////////////
+//moveToPosition::precondition()
+//moveToPosition::onEnter()
+//moveToPosition::onExit()
+
+function moveToPosition::behavior(%this, %obj)
+{
+   //echo("calling move to position!");
+   %obj.groundMove();
+   return SUCCESS;   
+}
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 function openSimEarthGUIs()
 {
@@ -52,17 +204,36 @@ function loadScene(%scene_id)
    %grav = true;
    %ambient = true;
    
+   
+   	//%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behaviorTree," @ 
+	         //"p.x as pos_x,p.y as pos_y,p.z as pos_z," @ 
+	         //"sp.x as scene_pos_x,sp.y as scene_pos_y,sp.z as scene_pos_z," @ 
+	         //"r.x as rot_x,r.y as rot_y,r.z as rot_z,r.angle as rot_angle, " @ 
+	         //"FROM sceneShape ss " @ 
+	         //"JOIN scene s ON s.id=" @ %scene_id @ " " @
+	         //"LEFT JOIN vector3 p ON ss.pos_id=p.id " @ 
+	         //"LEFT JOIN vector3 sp ON s.pos_id=sp.id " @ 
+	         //"LEFT JOIN rotation r ON ss.rot_id=r.id " @ 
+	         //"WHERE scene_id=" @ %scene_id @ ";";  
+	         
+	         
    //HERE: next step, we need to have a behavior tree name under sceneShape, and each
    //new shape needs to have its behavior assigned at create time, here.
 	%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behaviorTree," @ 
 	         "p.x as pos_x,p.y as pos_y,p.z as pos_z," @ 
+	         "sp.x as scene_pos_x,sp.y as scene_pos_y,sp.z as scene_pos_z," @ 
 	         "r.x as rot_x,r.y as rot_y,r.z as rot_z,r.angle as rot_angle " @ 
 	         "FROM sceneShape ss " @ 
+	         "JOIN scene s ON s.id=scene_id " @
 	         "LEFT JOIN vector3 p ON ss.pos_id=p.id " @ 
+	         "LEFT JOIN vector3 sp ON s.pos_id=sp.id " @ 
 	         "LEFT JOIN rotation r ON ss.rot_id=r.id " @ 
 	         "WHERE scene_id=" @ %scene_id @ ";";  
 	%result = sqlite.query(%query, 0);
-	//echo( %query );
+	
+	echo("calling loadScene, result " @ %result);
+   echo( "Query: " @ %query );	
+	
    if (%result)
    {	   
       while (!sqlite.endOfResult(%result))
@@ -76,16 +247,21 @@ function loadScene(%scene_id)
          %pos_y = sqlite.getColumn(%result, "pos_y");
          %pos_z = sqlite.getColumn(%result, "pos_z");
          
+         %scene_pos_x = sqlite.getColumn(%result, "scene_pos_x");
+         %scene_pos_y = sqlite.getColumn(%result, "scene_pos_y");
+         %scene_pos_z = sqlite.getColumn(%result, "scene_pos_z");
+         
          %rot_x = sqlite.getColumn(%result, "rot_x");
          %rot_y = sqlite.getColumn(%result, "rot_y");
          %rot_z = sqlite.getColumn(%result, "rot_z");
          %rot_angle = sqlite.getColumn(%result, "rot_angle");
          
          echo("Found a sceneShape: " @ %sceneShape_id @ " " @ %pos_x @ " " @ %pos_y @ " " @ %pos_z @
-                " " @ %rot_x @ " " @ %rot_y @ " " @ %rot_z @ " " @ %rot_angle);
+                " scenePos " @ %scene_pos_x @ " " @ %scene_pos_y @ " " @ %scene_pos_z );
                 
-         %position = %pos_x @ " " @ %pos_y @ " " @ %pos_z;
+         %position = (%pos_x + %scene_pos_x) @ " " @ (%pos_y + %scene_pos_y) @ " " @ (%pos_z + %scene_pos_z);
          %rotation = %rot_x @ " " @ %rot_y @ " " @ %rot_z @ " " @ %rot_angle;
+         
          %temp =  new PhysicsShape() {
             playAmbient = %ambient;
             dataBlock = "M4Physics";
@@ -108,8 +284,8 @@ function loadScene(%scene_id)
          
          MissionGroup.add(%temp);   
          SceneShapes.add(%temp);   
-         echo("Adding a scene shape: " @ %sceneShape_id @ ", sceneShapes count " @ SceneShapes.getCount() @
-                  " sceneID " @ %scene_id);
+         //echo("Adding a scene shape: " @ %sceneShape_id @ ", sceneShapes count " @ SceneShapes.getCount() @
+         //         " sceneID " @ %scene_id);
          
          if (strlen(%behaviorTree)>0)
          {
@@ -131,11 +307,10 @@ function unloadScene(%scene_id)
    for (%i=0;%i<%shapesCount;%i++)
    {
       %shape = SceneShapes.getObject(%i);  
-      echo("shapesCount " @ %shapesCount @ ", sceneShape id " @ %shape.sceneShapeID @ 
-               " scene " @ %shape.sceneID ); 
+      //echo("shapesCount " @ %shapesCount @ ", sceneShape id " @ %shape.sceneShapeID @ 
+      //         " scene " @ %shape.sceneID ); 
       if (%shape.sceneID==%scene_id)
-      {
-         echo("deleting a scene shape: " @ %shape.sceneShapeID);         
+      {       
          MissionGroup.remove(%shape);
          SceneShapes.remove(%shape);//Wuh oh... removing from SceneShapes shortens the array...
          %shape.delete();//Maybe??
