@@ -152,7 +152,7 @@ new SimGroup(MissionGroup) {
       canSaveDynamicFields = "1";
    };
    new TSStatic() {
-      shapeName = "art/shapes/rocks/rock2.dts";
+      shapeName = "art/shapes/Winter/TallPine_Win/Win_Sequia01.DAE";
       playAmbient = "1";
       meshCulling = "0";
       originSort = "0";
@@ -167,14 +167,14 @@ new SimGroup(MissionGroup) {
       enablePhysicsRep = "1";
       renderNormals = "0";
       forceDetail = "-1";
-      position = "-2 -3 -5";
-      rotation = "1 0 0 0";
+      position = "-25 0 -10";
+      rotation = "0 0 1 25";
       scale = "1 1 1";
       canSave = "1";
       canSaveDynamicFields = "1";
    };
    new TSStatic() {
-      shapeName = "art/shapes/rocks/rock1.dts";
+      shapeName = "art/shapes/Winter/TallPine_Win/Win_Sequia02.DAE";
       playAmbient = "1";
       meshCulling = "0";
       originSort = "0";
@@ -189,7 +189,7 @@ new SimGroup(MissionGroup) {
       enablePhysicsRep = "1";
       renderNormals = "0";
       forceDetail = "-1";
-      position = "0 22 -3";
+      position = "0 25 -12";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       canSave = "1";

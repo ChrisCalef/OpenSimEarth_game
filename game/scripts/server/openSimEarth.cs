@@ -70,7 +70,7 @@ function openSimEarthTick()
             loadScene($sceneId[%i]);
             $sceneLoaded[%i] = true;
          } 
-         else if ((VectorLen(%diff)>$sceneDist[%i]*6)&&($sceneLoaded[%i]==true))
+         else if ((VectorLen(%diff)>$sceneDist[%i]*20)&&($sceneLoaded[%i]==true))//*20 completely arbitrary
          {
             unloadScene($sceneId[%i]);
             $sceneLoaded[%i] = false;              
