@@ -106,7 +106,12 @@ function onStart()
    // can host in-game servers.
    initServer();
       
-   startSQL($pref::OpenSimEarthDB);//OpenSimEarth
+   //////////////// OpenSimEarth ///////////////
+   startSQL($pref::OpenSimEarthDB);
+   
+   schedule(90,0,"openSimEarthTick");
+   //////////////// OpenSimEarth ///////////////
+   
    
    // Start up in either client, or dedicated server mode
    if ($Server::Dedicated)

@@ -10,7 +10,7 @@
 <File ScrollX="0" ScrollY="647">scripts\client\default.bind.cs</File>
 <File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\baseTree.cs</File>
 <File ScrollX="0" ScrollY="12">scripts\server\BadBehavior\behaviorTrees\goToTargetTree.cs</File>
-<File ScrollX="0" ScrollY="513">scripts\server\BadBehavior\BadBot.cs</File>
+<File ScrollX="0" ScrollY="448">scripts\server\BadBehavior\BadBot.cs</File>
 <File ScrollX="0" ScrollY="0">art\shapes\m4_optimized\M4.cs</File>
 <File ScrollX="0" ScrollY="116" Active="true">scripts\server\openSimEarth.cs</File>
 <File ScrollX="0" ScrollY="104">levels\Empty Room.mis</File>

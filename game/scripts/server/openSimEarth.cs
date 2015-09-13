@@ -5,6 +5,7 @@
 //                 OPEN SIM EARTH
 //
 //=============================================================================
+$numScenes = 0;
 
 function startSQL(%dbname)
 {//Create the sqlite object that we will use in all the scripts.
@@ -23,20 +24,69 @@ function stopSQL()
    sqlite.delete();      
 }
 
+function openSimEarthTick()
+{
+   if ($numScenes==0) //first time through, unless DB is missing or corrupt.
+   {
+      %query = "SELECT s.id,p.x AS pos_x,p.y AS pos_y,p.z AS pos_z " @
+               "FROM scene s LEFT JOIN vector3 p ON p.id=s.pos_id;";
+      %result = sqlite.query(%query, 0);
+      echo("query: " @ %query);
+      %i=0;
+      if (%result)
+      {	   
+         while (!sqlite.endOfResult(%result))
+         {
+            %id = sqlite.getColumn(%result, "id");     
+            %x = sqlite.getColumn(%result, "pos_x");
+            %y = sqlite.getColumn(%result, "pos_y");
+            %z = sqlite.getColumn(%result, "pos_z");
+            //DatabaseSceneList.add(%name,%id);
+            echo("scene " @ %id  @ " " @ %x @ " " @ %y @ " " @ %z);
+            
+            $scenePos[%i] = %x @ " " @ %y @ " " @ %z;
+            $sceneId[%i] = %id;
+            $sceneLoaded[%i] = false;
+            $sceneDist[%i] = 5.0;//TEMP, add this to scenes table
+            
+            %i++;
+            sqlite.nextRow(%result);
+         }
+      } 
+      $numScenes = %i;
+      echo("Num scenes: " @ %numScenes);
+   }
+   sqlite.clearResult(%result);
+   
+   if ($myPlayer)
+   {
+      %pos = $myPlayer.getPosition();
+      for (%i=0;%i<$numScenes;%i++)
+      {
+         %diff = VectorSub(%pos,$scenePos[%i]);
+         
+         if ((VectorLen(%diff)<$sceneDist[%i])&&($sceneLoaded[%i]==false))
+         {
+            loadScene($sceneId[%i]);
+            $sceneLoaded[%i] = true;
+         } 
+         else if ((VectorLen(%diff)>$sceneDist[%i]*6)&&($sceneLoaded[%i]==true))
+         {
+            unloadScene($sceneId[%i]);
+            $sceneLoaded[%i] = false;              
+         }
+           
+      }
+      //echo("player position: " @ %pos );
+   }
+   
+   schedule(60,0,"openSimEarthTick");
 
+}
+   
 function PhysicsShape::onStartup(%this)
 {
    echo(%this @ " calling onStartup!");
-   
-   //TEMP, turn these into actionSequences in the db.
-   //%this.setAmbientSeqByName("ambient");
-   //%this.setIdleSeqByName("ambient");
-   //%this.setWalkSeqByName("walk");
-   //%this.setRunSeqByName("run");
-   //%this.setAttackSeqByName("power_punch_down");
-   //%this.setBlockSeqByName("tpose");
-   //%this.setFallSeqByName("ambient");
-   //%this.setGetupSeqByName("rSideGetup");
    
    %this.setActionSeq("ambient","ambient");//This might not always be idle, could be just breathing
    %this.setActionSeq("idle","ambient");// and idle could be that plus fidgeting, etc.
