@@ -40,8 +40,8 @@ new SimGroup(MissionGroup) {
       canSaveDynamicFields = "1";
    };
    new Sun(theSun) {
-      azimuth = "150";
-      elevation = "40";
+      azimuth = "0";
+      elevation = "90";
       color = "0.968628 0.901961 0.901961 1";
       ambient = "0.078431 0.113725 0.156863 1";
       brightness = "1.5";
@@ -94,8 +94,7 @@ new SimGroup(MissionGroup) {
          outdoorWeight = "1";
          isAIControlled = "0";
          dataBlock = "SpawnSphereMarker";
-         position = "1800 1800 200";
-         //position = "0 0 2";
+         position = "-2270 -2780 250";
          rotation = "1 0 0 0";
          scale = "1 1 1";
          canSave = "1";
@@ -105,14 +104,49 @@ new SimGroup(MissionGroup) {
             lockCount = "0";
       };
    };
-   new Item() {
-      static = "1";
-      rotate = "1";
-      isAIControlled = "0";
-      dataBlock = "HealthKitPatch";
-      position = "381.415 6505.68 195.62";
+   new TSStatic() {
+      shapeName = "art/shapes/rocks/rock1.dts";
+      playAmbient = "1";
+      meshCulling = "0";
+      originSort = "0";
+      collisionType = "Collision Mesh";
+      decalType = "Collision Mesh";
+      allowPlayerStep = "0";
+      alphaFadeEnable = "0";
+      alphaFadeStart = "100";
+      alphaFadeEnd = "150";
+      alphaFadeInverse = "0";
+      clothEnabled = "0";
+      enablePhysicsRep = "1";
+      renderNormals = "0";
+      forceDetail = "-1";
+      position = "-1980 -2800 490";
       rotation = "1 0 0 0";
-      scale = "1 1 1";
+      scale = "4 4 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new TerrainBlock(BaseTerrain) {
+      terrainFile = "art/terrains/TerrainPager.ter";
+      castShadows = "1";
+      squareSize = "10";
+      baseTexSize = "1024";
+      baseTexFormat = "JPG";
+      lightMapSize = "256";
+      screenError = "16";
+      position = "-1280 -1280 -5000";
+      rotation = "1 0 0 0";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new TerrainPager(theTP) {
+      mapCenterLongitude = "-123";
+      mapCenterLatitude = "44";
+      tileLoadRadius = "5000";
+      tileDropRadius = "80000";
+      skyboxRes = "800";
+      useDataSource = "1";
+      internalName = "theTP";
       canSave = "1";
       canSaveDynamicFields = "1";
    };
@@ -121,7 +155,7 @@ new SimGroup(MissionGroup) {
       rotate = "1";
       isAIControlled = "0";
       dataBlock = "RyderAmmo";
-      position = "1820 1840 141";
+      position = "-2180.4 -2827.36 231.981";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       canSave = "1";
@@ -132,56 +166,10 @@ new SimGroup(MissionGroup) {
       rotate = "1";
       isAIControlled = "0";
       dataBlock = "HealthKitPatch";
-      position = "1820 1780 142";
-      rotation = "1 0 0 0";
+      position = "-2260 -2800 235";
       scale = "1 1 1";
       canSave = "1";
       canSaveDynamicFields = "1";
    };
-   new GroundPlane() {
-      squareSize = "128";
-      scaleU = "12";
-      scaleV = "12";
-      Material = "BlankWhite";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-         enabled = "1";
-         position = "0 0 -1";
-         rotation = "1 0 0 0";
-         scale = "1000 1000 1";
-   };
-   new TerrainBlock(BaseTerrain) {
-      terrainFile = "art/terrains/TerrainPager3.ter";
-      castShadows = "1";
-      squareSize = "10";
-      baseTexSize = "1024";
-      baseTexFormat = "JPG";
-      lightMapSize = "256";
-      screenError = "16";
-      position = "-1280 -1280 -500";
-      rotation = "1 0 0 0";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-   };
-   new TerrainPager(theTP) {
-      mapCenterLongitude = "-123.1";
-      mapCenterLatitude = "44";
-      tileLoadRadius = "12000";
-      tileDropRadius = "80000";
-      skyboxRes = "800";
-      useDataSource = "0";
-      internalName = "theTP";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-   };
-   //new Forest(theForest) {
-      //position = "0 0 0";
-      //rotation = "1 0 0 0";
-      //scale = "1 1 1";
-      //canSave = "1";
-      //canSaveDynamicFields = "1";
-      //dataFile = "levels/TerrainPager2.forest";
-      //lodReflectScalar = "2";
-   //};
 };
 //--- OBJECT WRITE END ---
