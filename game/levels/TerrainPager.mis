@@ -104,28 +104,6 @@ new SimGroup(MissionGroup) {
             lockCount = "0";
       };
    };
-   new TSStatic() {
-      shapeName = "art/shapes/rocks/rock1.dts";
-      playAmbient = "1";
-      meshCulling = "0";
-      originSort = "0";
-      collisionType = "Collision Mesh";
-      decalType = "Collision Mesh";
-      allowPlayerStep = "0";
-      alphaFadeEnable = "0";
-      alphaFadeStart = "100";
-      alphaFadeEnd = "150";
-      alphaFadeInverse = "0";
-      clothEnabled = "0";
-      enablePhysicsRep = "1";
-      renderNormals = "0";
-      forceDetail = "-1";
-      position = "-1980 -2800 490";
-      rotation = "1 0 0 0";
-      scale = "4 4 1";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-   };
    new TerrainBlock(BaseTerrain) {
       terrainFile = "art/terrains/TerrainPager.ter";
       castShadows = "1";
@@ -145,7 +123,7 @@ new SimGroup(MissionGroup) {
       tileLoadRadius = "5000";
       tileDropRadius = "80000";
       skyboxRes = "800";
-      useDataSource = "1";
+      useDataSource = "0";
       internalName = "theTP";
       canSave = "1";
       canSaveDynamicFields = "1";
