@@ -107,7 +107,7 @@ function onStart()
    initServer();
       
    //////////////// OpenSimEarth ///////////////
-   startSQL($pref::OpenSimEarthDB);
+   startSQL($pref::OpenSimEarth::DB);
    
    schedule(90,0,"openSimEarthTick");
    //////////////// OpenSimEarth ///////////////

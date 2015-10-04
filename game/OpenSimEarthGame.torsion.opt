@@ -10,16 +10,21 @@
 <File ScrollX="0" ScrollY="647">scripts\client\default.bind.cs</File>
 <File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\baseTree.cs</File>
 <File ScrollX="0" ScrollY="12">scripts\server\BadBehavior\behaviorTrees\goToTargetTree.cs</File>
-<File ScrollX="0" ScrollY="444">scripts\server\BadBehavior\BadBot.cs</File>
-<File ScrollX="0" ScrollY="0">art\shapes\m4_optimized\M4.cs</File>
-<File ScrollX="0" ScrollY="116">scripts\server\openSimEarth.cs</File>
+<File ScrollX="0" ScrollY="42">scripts\server\openSimEarth.cs</File>
 <File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\dropAndRoll.cs</File>
 <File ScrollX="0" ScrollY="19">scripts\server\BadBehavior\behaviorTrees\botTree.cs</File>
 <File ScrollX="0" ScrollY="487">art\datablocks\player.cs</File>
 <File ScrollX="0" ScrollY="0">scripts\main.cs</File>
 <File ScrollX="0" ScrollY="78">tools\worldEditor\main.cs</File>
-<File ScrollX="0" ScrollY="140" Active="true">levels\TerrainPager.mis</File>
+<File ScrollX="0" ScrollY="126">levels\TerrainPager.mis</File>
 <File ScrollX="0" ScrollY="0">scripts\server\terrainPager.cs</File>
 <File ScrollX="0" ScrollY="0">art\terrains\TT_Materials\Mud and Mulch\materials.cs</File>
+<File ScrollX="0" ScrollY="26">art\shapes\fg_convert\Dragonfly\materials.cs</File>
+<File ScrollX="0" ScrollY="143">art\shapes\fg_convert\A6M2\materials.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\fg_convert\F6F-Hellcat\materials.cs</File>
+<File ScrollX="0" ScrollY="32" Active="true">tools\forestEditor\forestEditorGui.cs</File>
+<File ScrollX="0" ScrollY="0">art\forest\managedItemData.cs</File>
+<File ScrollX="0" ScrollY="73">levels\Empty Terrain.mis</File>
+<File ScrollX="0" ScrollY="1014">levels\Outpost.mis</File>
 </OpenFiles>
 </TorsionProjectOptions>

@@ -36,7 +36,6 @@ function ForestEditorGui::setActiveTool( %this, %tool )
 function ForestEditorGui::onActiveForestUpdated( %this, %forest, %createNew )
 {
    %gotForest = isObject( %forest );
-
    // Give the user a chance to add a forest.
    if ( !%gotForest && %createNew )
    {

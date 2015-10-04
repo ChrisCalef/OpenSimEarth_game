@@ -7,6 +7,7 @@ new SimGroup(MissionGroup) {
    new LevelInfo(theLevelInfo) {
       nearClip = "0.1";
       visibleDistance = "1000";
+      visibleGhostDistance = "0";
       decalBias = "0.0015";
       fogColor = "0.6 0.6 0.7 1";
       fogDensity = "0";
@@ -43,7 +44,7 @@ new SimGroup(MissionGroup) {
       castShadows = "1";
       coronaEnabled = "1";
       coronaScale = "0.5";
-      coronaTint = "1 1 1 1";
+      coronaTint = "White";
       coronaUseLightColor = "1";
       flareScale = "1";
       attenuationRatio = "0 1 1";
@@ -170,7 +171,7 @@ new SimGroup(MissionGroup) {
       canSave = "1";
       canSaveDynamicFields = "1";
 
-      new Path(PatrolPath) {
+      new Path(patrolPath) {
          isLooping = "1";
          canSave = "1";
          canSaveDynamicFields = "1";

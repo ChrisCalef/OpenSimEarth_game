@@ -26,7 +26,7 @@ function stopSQL()
 
 function openSimEarthTick()
 {
-   if ($numScenes==0) //first time through, unless DB is missing or corrupt.
+   if (($numScenes==0)&&($pref::opensimearth::autoLoadScenes)) //first time through, unless DB is missing or corrupt.
    {
       %query = "SELECT s.id,p.x AS pos_x,p.y AS pos_y,p.z AS pos_z " @
                "FROM scene s LEFT JOIN vector3 p ON p.id=s.pos_id;";
@@ -58,7 +58,7 @@ function openSimEarthTick()
    }
    sqlite.clearResult(%result);
    
-   if ($myPlayer)
+   if (($myPlayer)&&($pref::opensimearth::autoLoadScenes))
    {
       %pos = $myPlayer.getPosition();
       for (%i=0;%i<$numScenes;%i++)
