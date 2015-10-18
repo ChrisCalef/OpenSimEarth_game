@@ -663,10 +663,11 @@ moveMap.bindCmd(keyboard, "n", "toggleNetGraph();", "");
 ///////// OpenSimEarth ////////////////////
 //GlobalActionMap.bindCmd(keyboard, "alt b", "$m4.aitp(15,\"2 0 0\");$m4.aitp(18,\"-2 0 0\");","");
 //TEMP, this will be hooked up to a gui of course.
-GlobalActionMap.bindCmd(keyboard, "alt f", "loadScene(1);","");
+GlobalActionMap.bindCmd(keyboard, "alt f", "loadScene(2);","");
 //GlobalActionMap.bindCmd(keyboard, "alt f", "loadScene(1); schedule(30, 0, \"assignBehaviors\"); schedule(40, 0, \"startRecording\");","");//
 GlobalActionMap.bindCmd(keyboard, "alt g", "stopRecording();","");
-GlobalActionMap.bindCmd(keyboard, "alt b", "makeSequences();","");
+//GlobalActionMap.bindCmd(keyboard, "alt b", "makeSequences();","");
+GlobalActionMap.bindCmd(keyboard, "alt b", "testAddTrees();","");
 
 GlobalActionMap.bindCmd(keyboard, "alt v", "pdd(1);metrics(fps);","");
 GlobalActionMap.bindCmd(keyboard, "alt d", "loadOSM();","");//"pdd(0);" todo - make this toggle

@@ -90,7 +90,7 @@ new SimGroup(ForestBrushGroup) {
          internalName = "ShortPineElement";
          canSave = "1";
          canSaveDynamicFields = "1";
-         ForestItemData = "ShortPineForestMesh";
+         ForestItemData = "ScrubPineForestMesh";
          probability = "1";
          rotationRange = "360";
          scaleMin = "1";
@@ -104,17 +104,11 @@ new SimGroup(ForestBrushGroup) {
          elevationMin = "-10000";
          elevationMax = "10000";
       };
-   };
-   new ForestBrush() {
-      internalName = "ScrubPineBrush";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-
       new ForestBrushElement() {
-         internalName = "ScrubPineElement";
+         internalName = "Element";
          canSave = "1";
          canSaveDynamicFields = "1";
-         ForestItemData = "ScrubPineForestMesh";
+         ForestItemData = "ShortPineForestMesh";
          probability = "1";
          rotationRange = "360";
          scaleMin = "1";

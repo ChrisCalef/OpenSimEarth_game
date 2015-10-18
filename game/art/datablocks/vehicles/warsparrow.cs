@@ -282,6 +282,7 @@ datablock FlyingVehicleData(WarSparrow)
   spawnOffset = "0 0 1";
   category = "Vehicles";
   shapeFile = "art/shapes/WarSparrow/WarSparrow.dts";
+  //shapeFile = "art/shapes/fg_convert/Dragonfly/dragonfly2.dts";
 
   multipassenger = false;
   renderWhenDestroyed = false;

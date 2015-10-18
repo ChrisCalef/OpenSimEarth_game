@@ -164,7 +164,7 @@ singleton Material(A6M2_ac3dmat7)
 };
 
 
-singleton Material(A6M2_Zero-green)
+singleton Material(A6M2_Zero_green)
 {
    mapTo = "A6M2_Zero-green";
    diffuseMap[0] = "Zero-green.png";
@@ -173,7 +173,7 @@ singleton Material(A6M2_Zero-green)
    doubleSided = "1";
    translucentBlendOp = "None";
 };
-singleton Material(A6M2_Zero-camo)
+singleton Material(A6M2_Zero_camo)
 {
    mapTo = "A6M2_Zero-camo";
    diffuseMap[0] = "Zero camo.png";

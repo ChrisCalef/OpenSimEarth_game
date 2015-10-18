@@ -13,11 +13,31 @@ function startSQL(%dbname)
    
    if (%sqlite.openDatabase(%dbname))
       echo("Successfully opened database: " @ %dbname );
-   else 
+   else {
       echo("We had a problem involving database: " @ %dbname );
-      
+      return;
+   }
 }
 
+   //TESTING - SpatiaLite.  Exciting promise, disappointing failure... so far.
+   //if (%sqlite.openDatabase("testDB.db"))
+   //{
+   //   echo("Successfully opened database: testDB.db" );
+      //%query = "INSERT INTO testTable ( name, geom ) VALUES ('Test01',GeomFromText('POINT(1 2)'));";
+      //%query = "";
+      //%result = sqlite.query(%query, 0);
+      //if (%result)
+      //   echo("spatialite inserted into a table with a geom!");
+      //else
+      //   echo("spatialite failed to insert into a table with a geom!  "   );
+   //   %sqlite.closeDatabase();
+   //}   
+   //NOW... apparently all we have to do is this, to gain access to all of SpatiaLite.
+   //%query = "SELECT load_extension('libspatialite-2.dll');";
+   //%result = sqlite.query(%query, 0);
+   //echo( "Loaded SpatiaLite: " @ %result );
+   //Except, maybe have to do this in the engine.
+   
 function stopSQL()
 {
    sqlite.closeDatabase();
@@ -306,8 +326,8 @@ function loadScene(%scene_id)
          %rot_z = sqlite.getColumn(%result, "rot_z");
          %rot_angle = sqlite.getColumn(%result, "rot_angle");
          
-         echo("Found a sceneShape: " @ %sceneShape_id @ " " @ %pos_x @ " " @ %pos_y @ " " @ %pos_z @
-                " scenePos " @ %scene_pos_x @ " " @ %scene_pos_y @ " " @ %scene_pos_z );
+         //echo("Found a sceneShape: " @ %sceneShape_id @ " " @ %pos_x @ " " @ %pos_y @ " " @ %pos_z @
+         //       " scenePos " @ %scene_pos_x @ " " @ %scene_pos_y @ " " @ %scene_pos_z );
                 
          %position = (%pos_x + %scene_pos_x) @ " " @ (%pos_y + %scene_pos_y) @ " " @ (%pos_z + %scene_pos_z);
          %rotation = %rot_x @ " " @ %rot_y @ " " @ %rot_z @ " " @ %rot_angle;
@@ -334,8 +354,7 @@ function loadScene(%scene_id)
          
          MissionGroup.add(%temp);   
          SceneShapes.add(%temp);   
-         //echo("Adding a scene shape: " @ %sceneShape_id @ ", sceneShapes count " @ SceneShapes.getCount() @
-         //         " sceneID " @ %scene_id);
+         echo("Adding a scene shape: " @ %sceneShape_id @ ", position " @ %position );
          
          if (strlen(%behaviorTree)>0)
          {
@@ -349,6 +368,20 @@ function loadScene(%scene_id)
    sqlite.clearResult(%result);
    //schedule(40, 0, "startRecording");
 } 
+
+//function testSpatialite()
+//{
+//   //%query = "CREATE TABLE spatialTest ( id INTEGER, name TEXT NOT NULL, geom BLOB NOT NULL);";
+//   %query = "INSERT INTO spatialTest ( id , name, geom ) VALUES (1,'Test01',GeomFromText('POINT(1 2)'));";
+   
+//   %result = sqlite.query(%query, 0);
+	
+//   if (%result)
+//      echo("spatialite inserted into a table with a geom!");
+//   else
+//      echo("spatialite failed to insert into a table with a geom!  "  );
+//}
+
 
 function unloadScene(%scene_id)
 {
@@ -433,7 +466,8 @@ function loadOSM()  // OpenStreetMap XML data
    
    %beforeTime = getRealTime();
    
-   theTP.loadOSM("min.osm");     
+   theTP.loadOSM($pref::OpenSimEarth::OSM,$pref::OpenSimEarth::OSMDB);     
+   //theTP.loadOSM("min.osm");     
    //theTP.loadOSM("kincaid_map.osm");  
    //theTP.loadOSM("central_south_eug.osm");  
    //theTP.loadOSM("thirtieth_map.osm");
@@ -446,8 +480,9 @@ function loadOSM()  // OpenStreetMap XML data
 function makeStreets()
 {
    %mapDB = new SQLiteObject(mapDB);
-   %dbname = "w130n40.db";//HERE: need to find this in prefs or something.
-   mapDB.openDatabase(%dbname);
+   %dbname = $pref::OpenSimEarth::OSMDB;//HERE: need to find this in prefs or something.
+   %result = mapDB.openDatabase(%dbname);
+   //echo("tried to open osmdb: " @ %result);
    
    %query = "SELECT osmId,type,name FROM osmWay;";  
 	%result = mapDB.query(%query, 0);
@@ -458,7 +493,7 @@ function makeStreets()
          %wayId = mapDB.getColumn(%result, "osmId");
          %wayType = mapDB.getColumn(%result, "type");         
          %wayName = mapDB.getColumn(%result, "name");
-         echo("found a way: " @ %wayName);
+         echo("found a way: " @ %wayName @ " id " @ %wayId);
          if ((%wayType $= "residential")||
                (%wayType $= "tertiary")||
                (%wayType $= "trunk")||
@@ -467,7 +502,8 @@ function makeStreets()
                (%wayType $= "motorway_link")||
                (%wayType $= "service")||
                (%wayType $= "footway")||
-               (%wayType $= "path"))
+               (%wayType $= "path")||
+               (%wayType $= "track"))
          {   
             
             //Width
@@ -480,7 +516,7 @@ function makeStreets()
                %roadWidth = 40.0; 
             else if (%wayType $= "footway")
                %roadWidth = 2.5; 
-            else if (%wayType $= "path")
+            else if ((%wayType $= "path")||(%wayType $= "track"))
                %roadWidth = 5.0; 
             
             //Material
@@ -497,45 +533,66 @@ function makeStreets()
             %result2 = mapDB.query(%node_query, 0);
             if (%result2)
             {	   
-               echo("query2 results: " @ mapDB.numRows(%result2));
+               //echo("query2 results: " @ mapDB.numRows(%result2));
                %nodeString = "";
                while (!mapDB.endOfResult(%result2))
                {
+                  %nodeId = mapDB.getColumn(%result2, "nodeId");
                   %latitude = mapDB.getColumn(%result2, "latitude");
                   %longitude = mapDB.getColumn(%result2, "longitude");
                   %pos = theTP.convertLatLongToXYZ(%longitude @ " " @ %latitude @ " 0.0");
                   %type = mapDB.getColumn(%result2, "type");         
                   %name = mapDB.getColumn(%result2, "name");               
-                  echo("node latitude " @ %latitude @ " longitude " @ %longitude @
+                  echo("  Node " @ %nodeId @ " longitude " @ %longitude @ " latitude " @ %latitude @ 
                        " type " @ %type @ " name " @ %name );
-                  %nodeString = %nodeString @ " Node = \"" @ %pos @ " " @ %roadWidth @ "\";";                      
+                  //%nodeString = %nodeString @ " Node = \"" @ %pos @ " " @ %roadWidth @ " 2 0 0 1\";";//2 = road depth, fix                  
+                  %nodeString = %nodeString @ " Node = \"" @ %pos @ " " @ %roadWidth @ "\";";                  
                   mapDB.nextRow(%result2);
                }            
+               mapDB.clearResult(%result2);
             }
+            //Node = "-2263.4 -2753.58 233.796 10 5 0 0 1";
            // " Node = \"0.0 0.0 300.0 30.000000\";" @
             echo( %nodeString );
             //Then, do the new DecalRoad, execed in order to get a loop into the declaration.
+            
             %roadString = "      new DecalRoad() {" @
+               " InternalName = \"" @ %wayId @ "\";" @
                " Material = \"" @ %roadMaterial @ "\";" @
                " textureLength = \"25\";" @
                " breakAngle = \"3\";" @
                " renderPriority = \"10\";" @
-               " position = \"-8930.98 14017.1 109.587\";" @
+               " position = \"" @ %pos @ "\";" @ //Better position of last node than nothing, I guess.
                " rotation = \"1 0 0 0\";" @
                " scale = \"1 1 1\";" @
                " canSave = \"1\";" @
                " canSaveDynamicFields = \"1\";" @
                %nodeString @
             "};";
-         
+            /*
+            %roadString = "      new MeshRoad() {" @
+            " topMaterial = \"DefaultRoadMaterialTop\";" @
+            " bottomMaterial = \"DefaultRoadMaterialOther\";" @
+            " sideMaterial = \"DefaultRoadMaterialOther\";" @
+            " textureLength = \"5\";" @
+            " breakAngle = \"3\";" @
+            " widthSubdivisions = \"0\";" @
+            " position = \"-2263.4 -2753.58 233.796\";" @
+            " rotation = \"1 0 0 0\";" @
+            " scale = \"1 1 1\";" @
+            " canSave = \"1\";" @
+            " canSaveDynamicFields = \"1\";" @
+             %nodeString @
+            "};";
+         */
             eval(%roadString); 
          }
          
          mapDB.nextRow(%result);
       }
+      mapDB.clearResult(%result);
    } else echo ("no results.");
    
-   mapDB.clearResult(%result);
    mapDB.closeDatabase();
    mapDB.delete();
 }

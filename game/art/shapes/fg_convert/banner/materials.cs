@@ -7,7 +7,7 @@ singleton Material(banner2_ac3dmat1)
    specularPower[0] = "50";
    doubleSided = "1";
    translucentBlendOp = "None";
-   diffuseMap[0] = "art/shapes/fg_convert/banner.png";
+   diffuseMap[0] = "art/shapes/fg_convert/nimbus1/nimbus_textures.dds";
 };
 
 singleton Material(banner2_banner)

@@ -28,6 +28,9 @@ function ForestEditorGui::setActiveTool( %this, %tool )
    if ( %tool == ForestTools->BrushTool )
       ForestEditTabBook.selectPage(0);
       
+   //OpenSimEarth - Somehow I wrecked this...?
+   forestEditorGui.setActiveForest(theForest);
+   
    Parent::setActiveTool( %this, %tool );
 }
 
@@ -233,8 +236,7 @@ function ForestEditorGui::okDeleteMesh( %this, %mesh )
 function ForestEditorGui::validateBrushSize( %this )
 {
    %minBrushSize = 1;
-   %maxBrushSize = getWord(ETerrainEditor.maxBrushSize, 0);
-
+   %maxBrushSize = 1500;//getWord(ETerrainEditor.maxBrushSize, 0);
    %val = $ThisControl.getText();
    if(%val < %minBrushSize)
       $ThisControl.setValue(%minBrushSize);
