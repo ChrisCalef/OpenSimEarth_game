@@ -21,18 +21,18 @@
     </ResourceCompile>
   </ItemGroup>
    <ItemGroup>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libogg\src\bitwise.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libogg\src\bitwise.c">
          <Filter>Source Files\lib\src</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libogg\src\framing.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libogg\src\framing.c">
          <Filter>Source Files\lib\src</Filter>
       </ClCompile>
    </ItemGroup>
    <ItemGroup>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libogg\include\ogg\ogg.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libogg\include\ogg\ogg.h">
          <Filter>Source Files\lib\include</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libogg\include\ogg\os_types.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libogg\include\ogg\os_types.h">
          <Filter>Source Files\lib\include</Filter>
       </ClInclude>
    </ItemGroup>

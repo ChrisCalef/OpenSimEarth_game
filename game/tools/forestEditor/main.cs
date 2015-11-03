@@ -233,7 +233,8 @@ function ForestEditorPlugin::onSaveMission( %this, %missionFile )
 {
    ForestDataManager.saveDirty();
    
-   if ( isObject( theForest ) )                     
+   //OpenSimEarth: we need to create multiple .forest files, one per active/modified forest cell.
+   if ( isObject( theForest ) && ($pref::OpenSimEarth::saveForests))    
       theForest.saveDataFile();
       
    ForestBrushGroup.save( "art/forest/brushes.cs" );

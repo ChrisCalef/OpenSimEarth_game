@@ -15,21 +15,21 @@
     </ResourceCompile>
   </ItemGroup>
    <ItemGroup>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\lungif\dgif_lib.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\lungif\dgif_lib.c">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\lungif\gifalloc.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\lungif\gifalloc.c">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\lungif\gif_err.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\lungif\gif_err.c">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
    </ItemGroup>
    <ItemGroup>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\lungif\gif_lib.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\lungif\gif_lib.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\lungif\gif_lib_private.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\lungif\gif_lib_private.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
    </ItemGroup>

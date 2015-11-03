@@ -21,144 +21,144 @@
     </ResourceCompile>
   </ItemGroup>
    <ItemGroup>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\analyze.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\analyze.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\apiwrapper.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\apiwrapper.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\bitpack.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\bitpack.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\cpu.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\cpu.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decapiwrapper.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\decapiwrapper.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decinfo.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\decinfo.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decode.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\decode.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\dequant.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\dequant.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encapiwrapper.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encapiwrapper.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encfrag.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encfrag.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encinfo.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encinfo.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encode.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encode.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\enquant.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\enquant.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\fdct.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\fdct.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\fragment.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\fragment.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffdec.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffdec.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffenc.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffenc.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\idct.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\idct.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\info.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\info.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\internal.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\internal.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\mathops.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\mathops.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\mcenc.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\mcenc.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\quant.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\quant.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\rate.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\rate.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\state.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\state.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\tokenize.c">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\tokenize.c">
          <Filter>Source Files\lib\lib</Filter>
       </ClCompile>
    </ItemGroup>
    <ItemGroup>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\codec.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\codec.h">
          <Filter>Source Files\lib\include</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\theora.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\theora.h">
          <Filter>Source Files\lib\include</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\theoradec.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\theoradec.h">
          <Filter>Source Files\lib\include</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\theoraenc.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\theoraenc.h">
          <Filter>Source Files\lib\include</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\apiwrapper.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\apiwrapper.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\bitpack.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\bitpack.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\cpu.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\cpu.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\dct.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\dct.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decint.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\decint.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\dequant.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\dequant.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encint.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\encint.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\enquant.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\enquant.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffdec.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffdec.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffenc.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffenc.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffman.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffman.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\internal.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\internal.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\mathops.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\mathops.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\modedec.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\modedec.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\ocintrin.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\ocintrin.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\quant.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\quant.h">
          <Filter>Source Files\lib\lib</Filter>
       </ClInclude>
    </ItemGroup>

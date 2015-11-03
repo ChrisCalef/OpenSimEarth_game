@@ -46,13 +46,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/T3D/Torque3D/Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../../../../Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">libtheora_DEBUG</TargetName>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">F:/T3D/Torque3D/Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">../../../../../Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">libtheora_OPTIMIZEDDEBUG</TargetName>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/T3D/Torque3D/Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../../../../Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">libtheora</TargetName>
   </PropertyGroup>
@@ -61,7 +61,7 @@
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>F:/T3D/Torque3D/Engine/lib/libtheora/include;F:/T3D/Torque3D/Engine/lib/libogg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../Engine/lib/libtheora/include;../../../../../Engine/lib/libogg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_DEBUG_GUARD;D3D_DEBUG_INFO;TORQUE_NET_STATS;UNICODE;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -98,7 +98,7 @@
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>F:/T3D/Torque3D/Engine/lib/libtheora/include;F:/T3D/Torque3D/Engine/lib/libogg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../Engine/lib/libtheora/include;../../../../../Engine/lib/libogg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_DEBUG_GUARD;D3D_DEBUG_INFO;TORQUE_NET_STATS;UNICODE;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -134,7 +134,7 @@
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>F:/T3D/Torque3D/Engine/lib/libtheora/include;F:/T3D/Torque3D/Engine/lib/libogg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../Engine/lib/libtheora/include;../../../../../Engine/lib/libogg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>UNICODE;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -168,234 +168,234 @@
                
                
                
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\codec.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\codec.h" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\theora.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\theora.h" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\theoradec.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\theoradec.h" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\include\theora\theoraenc.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\include\theora\theoraenc.h" />      
 				         
 				      
    
       
       
                
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\analyze.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\analyze.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\apiwrapper.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\apiwrapper.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\apiwrapper.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\apiwrapper.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\bitpack.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\bitpack.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\bitpack.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\bitpack.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\cpu.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\cpu.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\cpu.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\cpu.h" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\dct.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\dct.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decapiwrapper.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\decapiwrapper.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decinfo.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\decinfo.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decint.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\decint.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\decode.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\decode.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\dequant.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\dequant.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\dequant.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\dequant.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encapiwrapper.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encapiwrapper.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encfrag.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encfrag.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encinfo.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encinfo.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encint.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\encint.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\encode.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\encode.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\enquant.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\enquant.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\enquant.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\enquant.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\fdct.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\fdct.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\fragment.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\fragment.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffdec.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffdec.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffdec.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffdec.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffenc.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffenc.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffenc.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffenc.h" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\huffman.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\huffman.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\idct.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\idct.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\info.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\info.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\internal.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\internal.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\internal.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\internal.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\mathops.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\mathops.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\mathops.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\mathops.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\mcenc.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\mcenc.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\modedec.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\modedec.h" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\ocintrin.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\ocintrin.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\quant.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\quant.c" />      
 				         
 				      
    
       
-               				                     <ClInclude Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\quant.h" />      
+               				                     <ClInclude Include="..\..\..\..\..\Engine\lib\libtheora\lib\quant.h" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\rate.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\rate.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\state.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\state.c" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\libtheora\lib\tokenize.c" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\libtheora\lib\tokenize.c" />      
 				         
 				      
    

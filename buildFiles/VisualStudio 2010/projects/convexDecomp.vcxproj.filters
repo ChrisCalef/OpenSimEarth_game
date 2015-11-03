@@ -15,78 +15,78 @@
     </ResourceCompile>
   </ItemGroup>
    <ItemGroup>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvConcavityVolume.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvConcavityVolume.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvConvexDecomposition.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvConvexDecomposition.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvFloatMath.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvFloatMath.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvMeshIslandGeneration.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvMeshIslandGeneration.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvRayCast.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvRayCast.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvRemoveTjunctions.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvRemoveTjunctions.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvSplitMesh.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvSplitMesh.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvStanHull.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvStanHull.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvThreadConfig.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\NvThreadConfig.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\wavefront.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\lib\convexDecomp\wavefront.cpp">
          <Filter>Source Files\lib</Filter>
       </ClCompile>
    </ItemGroup>
    <ItemGroup>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvConcavityVolume.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvConcavityVolume.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvConvexDecomposition.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvConvexDecomposition.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvFloatMath.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvFloatMath.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvFloatMath.inl">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvFloatMath.inl">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvHashMap.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvHashMap.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvMeshIslandGeneration.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvMeshIslandGeneration.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvRayCast.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvRayCast.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvRemoveTjunctions.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvRemoveTjunctions.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvSimpleTypes.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvSimpleTypes.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvSplitMesh.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvSplitMesh.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvStanHull.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvStanHull.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvThreadConfig.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvThreadConfig.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\NvUserMemAlloc.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\NvUserMemAlloc.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
-      <ClInclude Include="F:\T3D\Torque3D\Engine\lib\convexDecomp\wavefront.h">
+      <ClInclude Include="..\..\..\..\..\Engine\lib\convexDecomp\wavefront.h">
          <Filter>Source Files\lib</Filter>
       </ClInclude>
    </ItemGroup>

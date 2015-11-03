@@ -15,7 +15,7 @@
     </ResourceCompile>
   </ItemGroup>
    <ItemGroup>
-      <ClCompile Include="F:\T3D\Torque3D\Engine\source\main\main.cpp">
+      <ClCompile Include="..\..\..\..\..\Engine\source\main\main.cpp">
          <Filter>Source Files\source</Filter>
       </ClCompile>
    </ItemGroup>

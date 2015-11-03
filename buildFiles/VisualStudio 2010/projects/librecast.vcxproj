@@ -46,13 +46,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/T3D/Torque3D/Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../../../../Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">librecast_DEBUG</TargetName>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">F:/T3D/Torque3D/Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">../../../../../Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">librecast_OPTIMIZEDDEBUG</TargetName>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/T3D/Torque3D/Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../../../../Engine/lib//compiled/$(Configuration).$(Platform)/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">librecast</TargetName>
   </PropertyGroup>
@@ -61,7 +61,7 @@
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>F:/T3D/Torque3D/Engine/lib/recast/DebugUtils/Include;F:/T3D/Torque3D/Engine/lib/recast/Recast/Include;F:/T3D/Torque3D/Engine/lib/recast/Detour/Include;F:/T3D/Torque3D/Engine/lib/recast/DetourTileCache/Include;F:/T3D/Torque3D/Engine/lib/recast/DetourCrowd/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../Engine/lib/recast/DebugUtils/Include;../../../../../Engine/lib/recast/Recast/Include;../../../../../Engine/lib/recast/Detour/Include;../../../../../Engine/lib/recast/DetourTileCache/Include;../../../../../Engine/lib/recast/DetourCrowd/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_DEBUG_GUARD;D3D_DEBUG_INFO;TORQUE_NET_STATS;UNICODE;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -98,7 +98,7 @@
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>F:/T3D/Torque3D/Engine/lib/recast/DebugUtils/Include;F:/T3D/Torque3D/Engine/lib/recast/Recast/Include;F:/T3D/Torque3D/Engine/lib/recast/Detour/Include;F:/T3D/Torque3D/Engine/lib/recast/DetourTileCache/Include;F:/T3D/Torque3D/Engine/lib/recast/DetourCrowd/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../Engine/lib/recast/DebugUtils/Include;../../../../../Engine/lib/recast/Recast/Include;../../../../../Engine/lib/recast/Detour/Include;../../../../../Engine/lib/recast/DetourTileCache/Include;../../../../../Engine/lib/recast/DetourCrowd/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_DEBUG_GUARD;D3D_DEBUG_INFO;TORQUE_NET_STATS;UNICODE;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -134,7 +134,7 @@
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>F:/T3D/Torque3D/Engine/lib/recast/DebugUtils/Include;F:/T3D/Torque3D/Engine/lib/recast/Recast/Include;F:/T3D/Torque3D/Engine/lib/recast/Detour/Include;F:/T3D/Torque3D/Engine/lib/recast/DetourTileCache/Include;F:/T3D/Torque3D/Engine/lib/recast/DetourCrowd/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../Engine/lib/recast/DebugUtils/Include;../../../../../Engine/lib/recast/Recast/Include;../../../../../Engine/lib/recast/Detour/Include;../../../../../Engine/lib/recast/DetourTileCache/Include;../../../../../Engine/lib/recast/DetourCrowd/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>UNICODE;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -168,150 +168,150 @@
                
                
                
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DebugUtils\Source\DebugDraw.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DebugUtils\Source\DebugDraw.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DebugUtils\Source\DetourDebugDraw.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DebugUtils\Source\DetourDebugDraw.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DebugUtils\Source\RecastDebugDraw.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DebugUtils\Source\RecastDebugDraw.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DebugUtils\Source\RecastDump.cpp" />      
-				         
-				      
-   
-      
-      
-               
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Detour\Source\DetourAlloc.cpp" />      
-				         
-				      
-   
-      
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Detour\Source\DetourCommon.cpp" />      
-				         
-				      
-   
-      
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Detour\Source\DetourNavMesh.cpp" />      
-				         
-				      
-   
-      
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Detour\Source\DetourNavMeshBuilder.cpp" />      
-				         
-				      
-   
-      
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Detour\Source\DetourNavMeshQuery.cpp" />      
-				         
-				      
-   
-      
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Detour\Source\DetourNode.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DebugUtils\Source\RecastDump.cpp" />      
 				         
 				      
    
       
       
                
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourCrowd\Source\DetourCrowd.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Detour\Source\DetourAlloc.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourCrowd\Source\DetourLocalBoundary.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Detour\Source\DetourCommon.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourCrowd\Source\DetourObstacleAvoidance.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Detour\Source\DetourNavMesh.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourCrowd\Source\DetourPathCorridor.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Detour\Source\DetourNavMeshBuilder.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourCrowd\Source\DetourPathQueue.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Detour\Source\DetourNavMeshQuery.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourCrowd\Source\DetourProximityGrid.cpp" />      
-				         
-				      
-   
-      
-      
-               
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourTileCache\Source\DetourTileCache.cpp" />      
-				         
-				      
-   
-      
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\DetourTileCache\Source\DetourTileCacheBuilder.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Detour\Source\DetourNode.cpp" />      
 				         
 				      
    
       
       
                
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\Recast.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourCrowd\Source\DetourCrowd.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastAlloc.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourCrowd\Source\DetourLocalBoundary.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastArea.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourCrowd\Source\DetourObstacleAvoidance.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastContour.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourCrowd\Source\DetourPathCorridor.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastFilter.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourCrowd\Source\DetourPathQueue.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastLayers.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourCrowd\Source\DetourProximityGrid.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastMesh.cpp" />      
+      
+               
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourTileCache\Source\DetourTileCache.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastMeshDetail.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\DetourTileCache\Source\DetourTileCacheBuilder.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastRasterization.cpp" />      
+      
+               
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\Recast.cpp" />      
 				         
 				      
    
       
-               				                     <ClCompile Include="F:\T3D\Torque3D\Engine\lib\recast\Recast\Source\RecastRegion.cpp" />      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastAlloc.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastArea.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastContour.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastFilter.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastLayers.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastMesh.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastMeshDetail.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastRasterization.cpp" />      
+				         
+				      
+   
+      
+               				                     <ClCompile Include="..\..\..\..\..\Engine\lib\recast\Recast\Source\RecastRegion.cpp" />      
 				         
 				      
    

@@ -265,6 +265,212 @@ function openSimEarthGUIs()
    sqlite.clearResult(%result);
 }
 
+//Direct copy of EditorSaveMission from menuHandlers.ed.cs. This version exists
+//because mission save is actually just SimObject::save, and that is way too deep 
+//into T3D to be making application level changes. Instead, we just call this one,
+//but we are still going to have problems with all the plugins until we keep them 
+//from calling MissionGroup.save() on their own.
+function openSimEarthSaveMission()
+{
+      // just save the mission without renaming it
+   if(isFunction("getObjectLimit") && MissionGroup.getFullCount() >= getObjectLimit())
+   {
+      MessageBoxOKBuy( "Object Limit Reached", "You have exceeded the object limit of " @ getObjectLimit() @ " for this demo. You can remove objects if you would like to add more.", "", "Canvas.showPurchaseScreen(\"objectlimit\");" );
+      return;
+   }
+   
+   // first check for dirty and read-only files:
+   if((EWorldEditor.isDirty || ETerrainEditor.isMissionDirty) && !isWriteableFileName($Server::MissionFile))
+   {
+      MessageBox("Error", "Mission file \""@ $Server::MissionFile @ "\" is read-only.  Continue?", "Ok", "Stop");
+      return false;
+   }
+   if(ETerrainEditor.isDirty)
+   {
+      // Find all of the terrain files
+      initContainerTypeSearch($TypeMasks::TerrainObjectType);
+
+      while ((%terrainObject = containerSearchNext()) != 0)
+      {
+         if (!isWriteableFileName(%terrainObject.terrainFile))
+         {
+            if (MessageBox("Error", "Terrain file \""@ %terrainObject.terrainFile @ "\" is read-only.  Continue?", "Ok", "Stop") == $MROk)
+               continue;
+            else
+               return false;
+         }
+      }
+   }
+  
+   // now write the terrain and mission files out:
+   
+   
+   ///////////////////////////   
+   //For openSimEarth, we need to save many things to the database instead of to 
+   //the mission. Starting with TSStatics.
+   $tempStaticGroup = new SimSet();
+   
+   if ($pref::OpenSimEarth::saveStatics)
+      osePullMissionStaticsAndSave($tempStaticGroup);
+   else
+      osePullMissionStatics($tempStaticGroup);
+   
+   
+   if(EWorldEditor.isDirty || ETerrainEditor.isMissionDirty)
+      MissionGroup.save($Server::MissionFile);
+      
+   osePushMissionStatics($tempStaticGroup);
+   
+   ///////////////////////////   
+   
+   
+   if(ETerrainEditor.isDirty)
+   {
+      // Find all of the terrain files
+      initContainerTypeSearch($TypeMasks::TerrainObjectType);
+
+      while ((%terrainObject = containerSearchNext()) != 0)
+         %terrainObject.save(%terrainObject.terrainFile);
+   }
+
+   ETerrainPersistMan.saveDirty();
+      
+   // Give EditorPlugins a chance to save.
+   for ( %i = 0; %i < EditorPluginSet.getCount(); %i++ )
+   {
+      %obj = EditorPluginSet.getObject(%i);
+      if ( %obj.isDirty() )
+         %obj.onSaveMission( $Server::MissionFile );      
+   } 
+   
+   EditorClearDirty();
+   
+   EditorGui.saveAs = false;
+   
+   return true;
+   
+}
+
+function osePullMissionStatics(%simGroup)
+{//So, here we need to remove objects from the MissionGroup and put them into another simGroup.
+   for (%i = 0; %i < MissionGroup.getCount();%i++)
+   {
+      %obj = MissionGroup.getObject(%i);  
+      if (%obj.getClassName()$="TSStatic")
+      {
+         echo("FOUND A STATIC!!!!!!!!!!!!!  " @ %obj.shapeName);
+         %simGroup.add(%obj);
+      }
+   }
+   for (%i = 0; %i < %simGroup.getCount();%i++)
+   {
+      MissionGroup.remove(%simGroup.getObject(%i));
+   }
+}
+
+/*
+
+   //Temp, using these for testing purposes:
+
+   new TSStatic(Shack) {
+      shapeName = "art/shapes/FreeHarborProps/IndustrialShack_01/IndstrialShack_01.DAE";
+      playAmbient = "1";
+      meshCulling = "0";
+      originSort = "0";
+      collisionType = "Collision Mesh";
+      decalType = "Collision Mesh";
+      allowPlayerStep = "0";
+      alphaFadeEnable = "0";
+      alphaFadeStart = "100";
+      alphaFadeEnd = "150";
+      alphaFadeInverse = "0";
+      clothEnabled = "0";
+      enablePhysicsRep = "1";
+      renderNormals = "0";
+      forceDetail = "-1";
+      position = "-6016.75 760 142.6";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new TSStatic(Zero) {
+      shapeName = "art/shapes/fg_convert/A6M2/A6M2.dae";
+      playAmbient = "1";
+      meshCulling = "0";
+      originSort = "0";
+      collisionType = "Collision Mesh";
+      decalType = "Collision Mesh";
+      allowPlayerStep = "0";
+      alphaFadeEnable = "0";
+      alphaFadeStart = "100";
+      alphaFadeEnd = "150";
+      alphaFadeInverse = "0";
+      clothEnabled = "0";
+      enablePhysicsRep = "1";
+      renderNormals = "0";
+      forceDetail = "-1";
+      position = "-5992.52 761.649 150.05";
+      rotation = "-0.0886148 -0.0908338 0.991916 102.058";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new TSStatic(Dragonfly) {
+      shapeName = "art/shapes/fg_convert/Dragonfly/dragonfly.dae";
+      playAmbient = "1";
+      meshCulling = "0";
+      originSort = "0";
+      collisionType = "Collision Mesh";
+      decalType = "Collision Mesh";
+      allowPlayerStep = "0";
+      alphaFadeEnable = "0";
+      alphaFadeStart = "100";
+      alphaFadeEnd = "150";
+      alphaFadeInverse = "0";
+      clothEnabled = "0";
+      enablePhysicsRep = "1";
+      renderNormals = "0";
+      forceDetail = "-1";
+      position = "-5994.59 729.037 144.997";
+      rotation = "0.873169 -0.314705 -0.372205 1.7694";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   */
+function osePullMissionStaticsAndSave(%simGroup)
+{
+   //Whoops, this all has to move to the engine side because six digit limit on floating point precision.
+   //Would dig into console code to fix that but this will all run faster in C++ as well, better to move it.
+
+   theTP.saveStaticShapes();
+   
+   //there, that will save them to the DB, but we still need to copy them out of the MissionGroup
+   //here to prevent them from saving to the mission file.
+   
+   for (%i = 0; %i < MissionGroup.getCount();%i++)
+   {
+      %obj = MissionGroup.getObject(%i);  
+      if (%obj.getClassName()$="TSStatic")
+      {
+         %simGroup.add(%obj);
+      }
+   }
+   
+   for (%i = 0; %i < %simGroup.getCount();%i++)
+   {
+      MissionGroup.remove(%simGroup.getObject(%i));
+   }
+}
+
+function osePushMissionStatics(%simGroup)
+{
+   for (%i = 0; %i < %simGroup.getCount();%i++)
+   {
+      MissionGroup.add(%simGroup.getObject(%i));
+   }
+}
 
 function loadScene(%scene_id)
 {
@@ -479,20 +685,20 @@ function loadOSM()  // OpenStreetMap XML data
 
 function makeStreets()
 {
-   %mapDB = new SQLiteObject(mapDB);
+   %mapDB = new SQLiteObject();
    %dbname = $pref::OpenSimEarth::OSMDB;//HERE: need to find this in prefs or something.
-   %result = mapDB.openDatabase(%dbname);
+   %result = %mapDB.openDatabase(%dbname);
    //echo("tried to open osmdb: " @ %result);
    
    %query = "SELECT osmId,type,name FROM osmWay;";  
-	%result = mapDB.query(%query, 0);
+	%result = %mapDB.query(%query, 0);
    if (%result)
    {	   
-      while (!mapDB.endOfResult(%result))
+      while (!%mapDB.endOfResult(%result))
       {
-         %wayId = mapDB.getColumn(%result, "osmId");
-         %wayType = mapDB.getColumn(%result, "type");         
-         %wayName = mapDB.getColumn(%result, "name");
+         %wayId = %mapDB.getColumn(%result, "osmId");
+         %wayType = %mapDB.getColumn(%result, "type");         
+         %wayName = %mapDB.getColumn(%result, "name");
          echo("found a way: " @ %wayName @ " id " @ %wayId);
          if ((%wayType $= "residential")||
                (%wayType $= "tertiary")||
@@ -530,26 +736,26 @@ function makeStreets()
             %node_query = "SELECT wn.nodeId,n.latitude,n.longitude,n.type,n.name from " @ 
                            "osmWayNode wn JOIN osmNode n ON wn.nodeId = n.osmId " @
                            "WHERE wn.wayID = " @ %wayId @ ";";
-            %result2 = mapDB.query(%node_query, 0);
+            %result2 = %mapDB.query(%node_query, 0);
             if (%result2)
             {	   
                //echo("query2 results: " @ mapDB.numRows(%result2));
                %nodeString = "";
-               while (!mapDB.endOfResult(%result2))
+               while (!%mapDB.endOfResult(%result2))
                {
-                  %nodeId = mapDB.getColumn(%result2, "nodeId");
-                  %latitude = mapDB.getColumn(%result2, "latitude");
-                  %longitude = mapDB.getColumn(%result2, "longitude");
+                  %nodeId = %mapDB.getColumn(%result2, "nodeId");
+                  %latitude = %mapDB.getColumn(%result2, "latitude");
+                  %longitude = %mapDB.getColumn(%result2, "longitude");
                   %pos = theTP.convertLatLongToXYZ(%longitude @ " " @ %latitude @ " 0.0");
-                  %type = mapDB.getColumn(%result2, "type");         
-                  %name = mapDB.getColumn(%result2, "name");               
+                  %type = %mapDB.getColumn(%result2, "type");         
+                  %name = %mapDB.getColumn(%result2, "name");               
                   echo("  Node " @ %nodeId @ " longitude " @ %longitude @ " latitude " @ %latitude @ 
                        " type " @ %type @ " name " @ %name );
                   //%nodeString = %nodeString @ " Node = \"" @ %pos @ " " @ %roadWidth @ " 2 0 0 1\";";//2 = road depth, fix                  
                   %nodeString = %nodeString @ " Node = \"" @ %pos @ " " @ %roadWidth @ "\";";                  
-                  mapDB.nextRow(%result2);
+                  %mapDB.nextRow(%result2);
                }            
-               mapDB.clearResult(%result2);
+               %mapDB.clearResult(%result2);
             }
             //Node = "-2263.4 -2753.58 233.796 10 5 0 0 1";
            // " Node = \"0.0 0.0 300.0 30.000000\";" @
@@ -588,13 +794,13 @@ function makeStreets()
             eval(%roadString); 
          }
          
-         mapDB.nextRow(%result);
+         %mapDB.nextRow(%result);
       }
-      mapDB.clearResult(%result);
+      %mapDB.clearResult(%result);
    } else echo ("no results.");
    
-   mapDB.closeDatabase();
-   mapDB.delete();
+   %mapDB.closeDatabase();
+   %mapDB.delete();
 }
 
 /*
@@ -636,7 +842,7 @@ function streetMap()
     
  }  */
    
-   
+//TEMP
 function makeRunways()
 {
     new DecalRoad() {
