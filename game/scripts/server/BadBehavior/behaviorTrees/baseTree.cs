@@ -37,12 +37,6 @@ new Root(baseTree) {
                canSave = "1";
                canSaveDynamicFields = "1";
             };
-            new ScriptEval() {
-               behaviorScript = "%obj.moveTo(%obj.getPosition()); %obj.actionSeq(\"run\");";
-               defaultReturnStatus = "SUCCESS";
-               canSave = "1";
-               canSaveDynamicFields = "1";
-            };
             new RandomWait() {
                waitMinMs = "5000";
                waitMaxMs = "7000";

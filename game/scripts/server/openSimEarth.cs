@@ -309,18 +309,32 @@ function openSimEarthSaveMission()
    //For openSimEarth, we need to save many things to the database instead of to 
    //the mission. Starting with TSStatics.
    $tempStaticGroup = new SimSet();
+   $tempRoadGroup = new SimSet();
+   $tempForestGroup = new SimSet();
    
    if ($pref::OpenSimEarth::saveStatics)
-      osePullMissionStaticsAndSave($tempStaticGroup);
+      osePullStaticsAndSave($tempStaticGroup);
    else
-      osePullMissionStatics($tempStaticGroup);
+      osePullStatics($tempStaticGroup);
+   
+   
+   //TEMP - should actually define this so it's possible to save to mission
+   if ($pref::OpenSimEarth::saveRoads)
+      osePullRoadsAndSave($tempRoadGroup);
+   else
+      osePullRoads($tempRoadGroup);
+   
+   
+   //if ($pref::OpenSimEarth::saveForests==false)
+   //   osePullForest($tempForestGroup);
    
    
    if(EWorldEditor.isDirty || ETerrainEditor.isMissionDirty)
       MissionGroup.save($Server::MissionFile);
       
-   osePushMissionStatics($tempStaticGroup);
-   
+   osePushStatics($tempStaticGroup);
+   osePushRoads($tempRoadGroup);
+   //osePushForest($tempForestGroup);
    ///////////////////////////   
    
    
@@ -348,106 +362,23 @@ function openSimEarthSaveMission()
    EditorGui.saveAs = false;
    
    return true;
-   
 }
 
-function osePullMissionStatics(%simGroup)
+function osePullStatics(%simGroup)
 {//So, here we need to remove objects from the MissionGroup and put them into another simGroup.
    for (%i = 0; %i < MissionGroup.getCount();%i++)
    {
       %obj = MissionGroup.getObject(%i);  
       if (%obj.getClassName()$="TSStatic")
-      {
-         echo("FOUND A STATIC!!!!!!!!!!!!!  " @ %obj.shapeName);
          %simGroup.add(%obj);
-      }
    }
    for (%i = 0; %i < %simGroup.getCount();%i++)
-   {
       MissionGroup.remove(%simGroup.getObject(%i));
-   }
 }
 
-/*
-
-   //Temp, using these for testing purposes:
-
-   new TSStatic(Shack) {
-      shapeName = "art/shapes/FreeHarborProps/IndustrialShack_01/IndstrialShack_01.DAE";
-      playAmbient = "1";
-      meshCulling = "0";
-      originSort = "0";
-      collisionType = "Collision Mesh";
-      decalType = "Collision Mesh";
-      allowPlayerStep = "0";
-      alphaFadeEnable = "0";
-      alphaFadeStart = "100";
-      alphaFadeEnd = "150";
-      alphaFadeInverse = "0";
-      clothEnabled = "0";
-      enablePhysicsRep = "1";
-      renderNormals = "0";
-      forceDetail = "-1";
-      position = "-6016.75 760 142.6";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-   };
-   new TSStatic(Zero) {
-      shapeName = "art/shapes/fg_convert/A6M2/A6M2.dae";
-      playAmbient = "1";
-      meshCulling = "0";
-      originSort = "0";
-      collisionType = "Collision Mesh";
-      decalType = "Collision Mesh";
-      allowPlayerStep = "0";
-      alphaFadeEnable = "0";
-      alphaFadeStart = "100";
-      alphaFadeEnd = "150";
-      alphaFadeInverse = "0";
-      clothEnabled = "0";
-      enablePhysicsRep = "1";
-      renderNormals = "0";
-      forceDetail = "-1";
-      position = "-5992.52 761.649 150.05";
-      rotation = "-0.0886148 -0.0908338 0.991916 102.058";
-      scale = "1 1 1";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-   };
-   new TSStatic(Dragonfly) {
-      shapeName = "art/shapes/fg_convert/Dragonfly/dragonfly.dae";
-      playAmbient = "1";
-      meshCulling = "0";
-      originSort = "0";
-      collisionType = "Collision Mesh";
-      decalType = "Collision Mesh";
-      allowPlayerStep = "0";
-      alphaFadeEnable = "0";
-      alphaFadeStart = "100";
-      alphaFadeEnd = "150";
-      alphaFadeInverse = "0";
-      clothEnabled = "0";
-      enablePhysicsRep = "1";
-      renderNormals = "0";
-      forceDetail = "-1";
-      position = "-5994.59 729.037 144.997";
-      rotation = "0.873169 -0.314705 -0.372205 1.7694";
-      scale = "1 1 1";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-   };
-   */
-function osePullMissionStaticsAndSave(%simGroup)
+function osePullStaticsAndSave(%simGroup)
 {
-   //Whoops, this all has to move to the engine side because six digit limit on floating point precision.
-   //Would dig into console code to fix that but this will all run faster in C++ as well, better to move it.
-
    theTP.saveStaticShapes();
-   
-   //there, that will save them to the DB, but we still need to copy them out of the MissionGroup
-   //here to prevent them from saving to the mission file.
    
    for (%i = 0; %i < MissionGroup.getCount();%i++)
    {
@@ -464,7 +395,41 @@ function osePullMissionStaticsAndSave(%simGroup)
    }
 }
 
-function osePushMissionStatics(%simGroup)
+function osePushStatics(%simGroup)
+{
+   for (%i = 0; %i < %simGroup.getCount();%i++)
+   {
+      MissionGroup.add(%simGroup.getObject(%i));
+   }
+}
+
+function osePullRoads(%simGroup)
+{//So, here we need to remove objects from the MissionGroup and put them into another simGroup.
+   for (%i = 0; %i < MissionGroup.getCount();%i++)
+   {
+      %obj = MissionGroup.getObject(%i);  
+      if (%obj.getClassName()$="MeshRoad")// and/or DecalRoad
+         %simGroup.add(%obj);
+   }
+   for (%i = 0; %i < %simGroup.getCount();%i++)
+      MissionGroup.remove(%simGroup.getObject(%i));
+}
+
+function osePullRoadsAndSave(%simGroup)
+{   
+   theTP.saveRoads();
+   
+   for (%i = 0; %i < MissionGroup.getCount();%i++)
+   {
+      %obj = MissionGroup.getObject(%i);  
+      if (%obj.getClassName()$="MeshRoad")// and/or DecalRoad
+         %simGroup.add(%obj);
+   }
+   for (%i = 0; %i < %simGroup.getCount();%i++)
+      MissionGroup.remove(%simGroup.getObject(%i));
+}
+
+function osePushRoads(%simGroup)
 {
    for (%i = 0; %i < %simGroup.getCount();%i++)
    {
@@ -480,7 +445,6 @@ function loadScene(%scene_id)
    %grav = true;
    %ambient = true;
    
-   
    	//%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behaviorTree," @ 
 	         //"p.x as pos_x,p.y as pos_y,p.z as pos_z," @ 
 	         //"sp.x as scene_pos_x,sp.y as scene_pos_y,sp.z as scene_pos_z," @ 
@@ -491,8 +455,7 @@ function loadScene(%scene_id)
 	         //"LEFT JOIN vector3 sp ON s.pos_id=sp.id " @ 
 	         //"LEFT JOIN rotation r ON ss.rot_id=r.id " @ 
 	         //"WHERE scene_id=" @ %scene_id @ ";";  
-	         
-	         
+
    //HERE: next step, we need to have a behavior tree name under sceneShape, and each
    //new shape needs to have its behavior assigned at create time, here.
 	%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behaviorTree," @ 
@@ -511,7 +474,7 @@ function loadScene(%scene_id)
    echo( "Query: " @ %query );	
 	
    if (%result)
-   {	   
+   {
       while (!sqlite.endOfResult(%result))
       {
          %sceneShape_id = sqlite.getColumn(%result, "ss_id");   
@@ -532,8 +495,8 @@ function loadScene(%scene_id)
          %rot_z = sqlite.getColumn(%result, "rot_z");
          %rot_angle = sqlite.getColumn(%result, "rot_angle");
          
-         //echo("Found a sceneShape: " @ %sceneShape_id @ " " @ %pos_x @ " " @ %pos_y @ " " @ %pos_z @
-         //       " scenePos " @ %scene_pos_x @ " " @ %scene_pos_y @ " " @ %scene_pos_z );
+         echo("Found a sceneShape: " @ %sceneShape_id @ " " @ %pos_x @ " " @ %pos_y @ " " @ %pos_z @
+                " scenePos " @ %scene_pos_x @ " " @ %scene_pos_y @ " " @ %scene_pos_z );
                 
          %position = (%pos_x + %scene_pos_x) @ " " @ (%pos_y + %scene_pos_y) @ " " @ (%pos_z + %scene_pos_z);
          %rotation = %rot_x @ " " @ %rot_y @ " " @ %rot_z @ " " @ %rot_angle;

@@ -41,7 +41,7 @@ function findTarget::behavior(%this, %obj)
    // get the objects datablock
    %db = %obj.dataBlock;
    %category = %obj.targetType;
-   echo(%this.getId() @ " trying to find target: " @ %obj.targetType);
+   echo(%this.getId() @ " trying to find target: " @ %obj.targetType @ "pos " @ %obj.position);
    // do a container search for items
    initContainerRadiusSearch( %obj.position, %db.findItemRange, %db.itemObjectTypes );
    while ( (%item = containerSearchNext()) != 0 )

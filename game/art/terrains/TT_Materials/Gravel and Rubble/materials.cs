@@ -6,7 +6,7 @@
 
 new TerrainMaterial()
 {
-   diffuseMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02_Dif";
+   diffuseMap = "art/terrains/forests_tile";
    internalName = "TT_Gravel_02";
    diffuseSize = "4";
    normalMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02_Nm";

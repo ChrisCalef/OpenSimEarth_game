@@ -195,11 +195,13 @@ new TerrainMaterial()
 
 new TerrainMaterial()
 {
-   diffuseMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02_Dif";
+   //diffuseMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02_Dif";
+   diffuseMap = "art/terrains/forests_tile";//??
    normalMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02_Nm";
    detailMap = "art/terrains/TT_Materials/Gravel and Rubble/TT_Gravel_02";
    internalName = "gravel_02";
    detailSize = "2";
+   macroMap = "art/terrains/TT_Materials/Mud and Mulch/TT_Mud_14_Dif";
 };
 
 new TerrainMaterial()
