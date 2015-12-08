@@ -2270,3 +2270,16 @@ function MaterialEditorGui::updateAccuCheckbox(%this, %value)
    MaterialEditorGui.updateActiveMaterial("accuEnabled[" @ MaterialEditorGui.currentLayer @ "]", %value);   
    MaterialEditorGui.guiSync( materialEd_previewMaterial );
 }
+
+singleton Material(transparent_mat)
+{
+   mapTo = "unmapped_mat";
+   diffuseMap[0] = "tools/editorClasses/gui/images/rollout_plusminus_transparent.png";
+   materialTag0 = "Miscellaneous";
+};
+
+singleton Material(DefaultWhite_015_mat)
+{
+   mapTo = "unmapped_mat";
+   diffuseMap[0] = "DefaultWhite_015";
+};

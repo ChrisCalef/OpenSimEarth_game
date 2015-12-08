@@ -250,6 +250,13 @@ function FlyerMachineGunProjectile::onCollision(%this,%obj,%col,%fade,%pos,%norm
 
   // Radius damage is a support scripts defined in radiusDamage.cs
   radiusDamage(%obj,%pos,%this.damageRadius,%this.radiusDamage,"FlyerMachineGunBullet",0);
+  
+  //openSimEarth: This is temporary, and we need to find a better way to do things like this,
+  //but for now just adding it here. When the object being collided into is named Skyscraper,
+  //the explosions need to spit out people.
+  echo("machine gun collision, " @ %col.getClassName() @ "  " @ %col.getName()); 
+  if (%col.getName()$="Skyscraper")
+   %col.spitM4s(%pos,%normal,1); 
 }
 
 //--------------------------------------------------------------------------

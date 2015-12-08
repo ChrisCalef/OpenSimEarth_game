@@ -10,12 +10,13 @@ singleton Material(A6M2_nospec_000)
 
 singleton Material(A6M2_transparent)
 {
-   mapTo = "transparent";
+   mapTo = "unmapped_mat";
    diffuseColor[0] = "0.437673 0.452499 0.476785 0.5";
    specular[0] = "0.64 0.64 0.64 1";
    specularPower[0] = "50";
    doubleSided = "1";
    translucent = "1";
+   materialTag0 = "Miscellaneous";
 };
 
 singleton Material(A6M2_lens1)

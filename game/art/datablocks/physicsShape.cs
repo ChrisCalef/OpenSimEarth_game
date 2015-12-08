@@ -33,6 +33,171 @@ enum physicsShapeType
 };
 */
 
+datablock PhysicsShapeData( bo105Physics )
+{	
+   category = "PhysicsShape";
+   shapeName = "art/shapes/fg_convert/bo105/bo105.dts";
+   emap = 1;
+   //simType = 2;
+   
+   isArticulated = false;//true;  //Tells us to look for an array of bodyparts instead of one body. 
+   shapeID = 3;        //ID into the physicsShape table in the database.
+
+   mass = "1";                // This is mass for every bodypart, which is wrong, need physx to calculate mass based on density.
+   massCenter = "0 0 0";      // Center of mass for rigid body
+   massBox = "1 1 1";         // Size of box used for moment of inertia,
+                              // if zero it defaults to object bounding box
+   drag = 0.2;                // Drag coefficient
+   bodyFriction = 0.8;
+   bodyRestitution = 0.1;
+   minImpactSpeed = 5;        // Impacts over this invoke the script callback
+   softImpactSpeed = 5;       // Play SoftImpact Sound
+   hardImpactSpeed = 15;      // Play HardImpact Sound
+   integration = 4;           // Physics integration: TickSec/Rate
+   collisionTol = 0.1;        // Collision distance tolerance
+   contactTol = 0.1;          // Contact velocity tolerance
+   
+   minRollSpeed = 10;
+   
+   maxDrag = 0.5;
+   minDrag = 0.01;
+
+   triggerDustHeight = 1;
+   dustHeight = 10;
+
+   dragForce = 0.05;
+   vertFactor = 0.05;
+
+   normalForce = 0.05;
+   restorativeForce = 0.05;
+   rollForce = 0.05;
+   pitchForce = 0.05;
+   
+   friction = "0.4";
+   linearDamping = "0.1";
+   angularDamping = "0.2";
+   buoyancyDensity = "0.9";
+   staticFriction = "0.5";
+   
+   radiusDamage        = 0;
+   damageRadius        = 0;
+   areaImpulse         = 0;
+   restitution = "0.3";
+   invulnerable = "0";
+   waterDampingScale = "10";
+   
+};
+
+datablock PhysicsShapeData( ka50Physics )
+{	
+   category = "PhysicsShape";
+   shapeName = "art/shapes/fg_convert/ka50/Models/ka50.dts";
+   emap = 1;
+   //simType = 2;
+   
+   isArticulated = false;//true;  //Tells us to look for an array of bodyparts instead of one body. 
+   shapeID = 4;        //ID into the physicsShape table in the database.
+
+   mass = "1";                // This is mass for every bodypart, which is wrong, need physx to calculate mass based on density.
+   massCenter = "0 0 0";      // Center of mass for rigid body
+   massBox = "1 1 1";         // Size of box used for moment of inertia,
+                              // if zero it defaults to object bounding box
+   drag = 0.2;                // Drag coefficient
+   bodyFriction = 0.8;
+   bodyRestitution = 0.1;
+   minImpactSpeed = 5;        // Impacts over this invoke the script callback
+   softImpactSpeed = 5;       // Play SoftImpact Sound
+   hardImpactSpeed = 15;      // Play HardImpact Sound
+   integration = 4;           // Physics integration: TickSec/Rate
+   collisionTol = 0.1;        // Collision distance tolerance
+   contactTol = 0.1;          // Contact velocity tolerance
+   
+   minRollSpeed = 10;
+   
+   maxDrag = 0.5;
+   minDrag = 0.01;
+
+   triggerDustHeight = 1;
+   dustHeight = 10;
+
+   dragForce = 0.05;
+   vertFactor = 0.05;
+
+   normalForce = 0.05;
+   restorativeForce = 0.05;
+   rollForce = 0.05;
+   pitchForce = 0.05;
+   
+   friction = "0.4";
+   linearDamping = "0.1";
+   angularDamping = "0.2";
+   buoyancyDensity = "0.9";
+   staticFriction = "0.5";
+   
+   radiusDamage        = 0;
+   damageRadius        = 0;
+   areaImpulse         = 0;
+   restitution = "0.3";
+   invulnerable = "0";
+   waterDampingScale = "10";
+   
+};
+
+datablock PhysicsShapeData( dragonflyPhysics )
+{	
+   category = "PhysicsShape";
+   shapeName = "art/shapes/fg_convert/Dragonfly/dragonfly.dts";
+   emap = 1;
+   //simType = 2;
+   
+   isArticulated = false;//true;  //Tells us to look for an array of bodyparts instead of one body. 
+   shapeID = 2;        //ID into the physicsShape table in the database.
+
+   mass = "1";                // This is mass for every bodypart, which is wrong, need physx to calculate mass based on density.
+   massCenter = "0 0 0";      // Center of mass for rigid body
+   massBox = "1 1 1";         // Size of box used for moment of inertia,
+                              // if zero it defaults to object bounding box
+   drag = 0.2;                // Drag coefficient
+   bodyFriction = 0.8;
+   bodyRestitution = 0.1;
+   minImpactSpeed = 5;        // Impacts over this invoke the script callback
+   softImpactSpeed = 5;       // Play SoftImpact Sound
+   hardImpactSpeed = 15;      // Play HardImpact Sound
+   integration = 4;           // Physics integration: TickSec/Rate
+   collisionTol = 0.1;        // Collision distance tolerance
+   contactTol = 0.1;          // Contact velocity tolerance
+   
+   minRollSpeed = 10;
+   
+   maxDrag = 0.5;
+   minDrag = 0.01;
+
+   triggerDustHeight = 1;
+   dustHeight = 10;
+
+   dragForce = 0.05;
+   vertFactor = 0.05;
+
+   normalForce = 0.05;
+   restorativeForce = 0.05;
+   rollForce = 0.05;
+   pitchForce = 0.05;
+   
+   friction = "0.4";
+   linearDamping = "0.1";
+   angularDamping = "0.2";
+   buoyancyDensity = "0.9";
+   staticFriction = "0.5";
+   
+   radiusDamage        = 0;
+   damageRadius        = 0;
+   areaImpulse         = 0;
+   restitution = "0.3";
+   invulnerable = "0";
+   waterDampingScale = "10";
+   
+};
+
 
 datablock PhysicsShapeData( M4Physics )
 {	

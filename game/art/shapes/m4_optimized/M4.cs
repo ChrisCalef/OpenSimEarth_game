@@ -6,7 +6,7 @@ singleton TSShapeConstructor(M4Dts)
 function M4Dts::onLoad(%this)
 {
    %this.addSequence("art/shapes/m4_optimized/sequences/TPose.dsq", "tpose", "0", "-1");
-   %this.addSequence("art/shapes/m4_optimized/sequences/Root4.dsq", "ambient", "0", "-1");
+   %this.addSequence("art/shapes/m4_optimized/sequences/Root4.dsq", "ambient", "0", "-1");//
    //%this.addSequence("art/shapes/m4_optimized/sequences/test_seq.dsq", "ambient", "0", "-1");
    //%this.addSequence("art/shapes/m4_optimized/sequences/Strut.dsq", "ambient", "0", "-1");
    %this.addSequence("art/shapes/m4_optimized/sequences/CMU_16_22.dsq", "walk", "0", "-1");
@@ -26,7 +26,8 @@ function M4Dts::onLoad(%this)
    %this.addSequence("art/shapes/m4_optimized/sequences/soldier_march.dsq", "walk2", "0", "-1");
    %this.addSequence("art/shapes/m4_optimized/sequences/01_13_swing_under_grcap.dsq", "swingUnder", "0", "-1");
    %this.addSequence("art/shapes/m4_optimized/scene_2/shape_1.dsq", "seq_1", "0", "-1");
-   
+   //%this.addSequence("art/shapes/m4_optimized/sequences/testHeli01.dsq", "testHeli01", "0", "-1");
+   //%this.addSequence("art/shapes/m4_optimized/sequences/testHeli03.dsq", "testHeli03", "0", "-1");
    
    %this.addNode("Col-1","root");
    %this.addCollisionDetail(-1,"box","bounds");
@@ -39,6 +40,7 @@ function M4Dts::onLoad(%this)
    //%this.setSequenceCyclic("power_punch_down", "1");
    %this.setSequenceCyclic("tpose", "1");
    %this.setSequenceCyclic("swingUnder", "1");
+   //%this.setSequenceCyclic("testHeli03", "1");
    //%this.setSequenceCyclic("seq_1", "1");
    //%this.setSequenceCyclic("seq_2", "1");
 } 

@@ -29,8 +29,3 @@ singleton Material( asphalt_mat )
    mapTo = "asphalt";
    diffuseMap[0]  = "./asphalt";
 };
-singleton Material( water_mat )
-{
-   mapTo = "water";
-   diffuseMap[0]  = "./water";
-};

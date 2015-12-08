@@ -6,13 +6,28 @@
 <Breakpoints/>
 <Bookmarks/>
 <OpenFiles>
-<File ScrollX="0" ScrollY="48">scripts\server\game.cs</File>
-<File ScrollX="0" ScrollY="652">scripts\client\default.bind.cs</File>
-<File ScrollX="0" ScrollY="345">scripts\server\openSimEarth.cs</File>
-<File ScrollX="0" ScrollY="4">art\forest\managedItemData.cs</File>
-<File ScrollX="0" ScrollY="10">scripts\server\BadBehavior\behaviorTrees\baseTree.cs</File>
-<File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\goToTargetTree.cs</File>
-<File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\WanderTree.cs</File>
-<File ScrollX="0" ScrollY="157" Active="true">levels\TerrainPager.mis</File>
+<File ScrollX="0" ScrollY="144">scripts\server\game.cs</File>
+<File ScrollX="0" ScrollY="665">scripts\client\default.bind.cs</File>
+<File ScrollX="0" ScrollY="111">scripts\server\openSimEarth.cs</File>
+<File ScrollX="0" ScrollY="9">scripts\server\BadBehavior\behaviorTrees\baseTree.cs</File>
+<File ScrollX="0" ScrollY="0">levels\TerrainPager.mis</File>
+<File ScrollX="0" ScrollY="0">scripts\server\BadBehavior\behaviorTrees\FallingTree.cs</File>
+<File ScrollX="0" ScrollY="28">art\datablocks\physicsShape.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\fg_convert\bo105\bo105_3.cs</File>
+<File ScrollX="0" ScrollY="129">scripts\server\BadBehavior\BadBot.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\m4_optimized\M4.cs</File>
+<File ScrollX="0" ScrollY="73">tools\worldEditor\scripts\editorPlugin.ed.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\fg_convert\Dragonfly\dragonfly.cs</File>
+<File ScrollX="0" ScrollY="28">core\scripts\server\spawn.cs</File>
+<File ScrollX="0" ScrollY="565">scripts\server\gameCore.cs</File>
+<File ScrollX="0" ScrollY="0">scripts\server\player.cs</File>
+<File ScrollX="0" ScrollY="627">art\datablocks\player.cs</File>
+<File ScrollX="0" ScrollY="0">core\art\datablocks\camera.cs</File>
+<File ScrollX="0" ScrollY="0" Active="true">art\shapes\fg_convert\ka50\Models\ka50.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\fg_convert\ka50\Models\materials.cs</File>
+<File ScrollX="0" ScrollY="26">art\shapes\fg_convert\Dragonfly\materials.cs</File>
+<File ScrollX="0" ScrollY="144">art\shapes\fg_convert\A6M2\materials.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\fg_convert\F6F-Hellcat\materials.cs</File>
+<File ScrollX="0" ScrollY="0">art\shapes\fg_convert\ka50\Models\MainRotor\materials.cs</File>
 </OpenFiles>
 </TorsionProjectOptions>

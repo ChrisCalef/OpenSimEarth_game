@@ -674,6 +674,15 @@ GlobalActionMap.bindCmd(keyboard, "alt d", "loadOSM();","");//"pdd(0);" todo - m
 GlobalActionMap.bindCmd(keyboard, "alt c", "makeStreets();","");//todo - make this toggle
 //GlobalActionMap.bindCmd(keyboard, "alt g", "echo($m4.getclassname());","");
 
+
+
+GlobalActionMap.bind( joystick, button0, mouseFire );
+GlobalActionMap.bind( joystick, button1, altTrigger );
+
+GlobalActionMap.bind( joystick, button5, joyButton5 );
+GlobalActionMap.bind( joystick, button6, joyButton6 );
+GlobalActionMap.bindCmd( joystick, button7, "joyButton7();" );
+GlobalActionMap.bindCmd( joystick, button8, "joyButton8();" );
 // ----------------------------------------------------------------------------
 // Useful vehicle stuff
 // ----------------------------------------------------------------------------
@@ -816,7 +825,7 @@ vehicleMap.bind( keyboard, down, movebackward );
 vehicleMap.bind( mouse, xaxis, yaw );
 vehicleMap.bind( mouse, yaxis, pitch );
 vehicleMap.bind( joystick, button0, mouseFire );
-vehicleMap.bind( joystick, button1, joyButton1 );
+vehicleMap.bind( joystick, button1, altTrigger );
 vehicleMap.bind( joystick, button2, panUp );
 vehicleMap.bind( joystick, button3, panDown );
 vehicleMap.bind( joystick, button4, joyButton4 );

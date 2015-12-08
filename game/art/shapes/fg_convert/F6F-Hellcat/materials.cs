@@ -1,11 +1,12 @@
 
 singleton Material(f6f_hellcat_DefaultWhite)
 {
-   mapTo = "DefaultWhite";
+   mapTo = "unmapped_mat";
    diffuseColor[0] = "0.8 0.8 0.8 1";
    specular[0] = "0.32 0.32 0.32 1";
    specularPower[0] = "50";
    translucentBlendOp = "None";
+   materialTag0 = "Miscellaneous";
 };
 
 singleton Material(f6f_hellcat_DefaultWhite_001)

@@ -31,6 +31,12 @@ new Root(baseTree) {
                canSave = "1";
                canSaveDynamicFields = "1";
             };
+            new RandomWait() {
+               waitMinMs = "500000";
+               waitMaxMs = "700000";
+               canSave = "1";
+               canSaveDynamicFields = "1";
+            };
             new SubTree() {
                subTreeName = "goToTargetTree";
                internalName = "go to target";

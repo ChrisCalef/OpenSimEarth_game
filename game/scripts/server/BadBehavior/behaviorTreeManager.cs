@@ -92,7 +92,7 @@ function BehaviorTreeManager::createTree(%this, %obj, %tree)
    
    if(!BehaviorTreeGroup.isMember(%tree))
    {
-      error("BehaviorTreeManager::assignTree - tree is not a member of BehaviorTreeGroup");
+      error("BehaviorTreeManager::assignTree - " @ %tree @ " is not a member of BehaviorTreeGroup");
       return -1;
    }
    

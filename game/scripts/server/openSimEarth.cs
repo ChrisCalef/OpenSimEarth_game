@@ -104,20 +104,46 @@ function openSimEarthTick()
 
 }
    
+   
+
+///////////////////////////////////////////////////////////////////////////////////////
+//MOVE: probably these should go under tools/openSimEarth, if not obsoleted entirely.
 function PhysicsShape::onStartup(%this)
 {
-   echo(%this @ " calling onStartup!");
+   echo(%this @ " calling onStartup! position " @ %this.getPosition() @ " datablock " @ %this.dataBlock.getName());
    
-   %this.setActionSeq("ambient","ambient");//This might not always be idle, could be just breathing
-   %this.setActionSeq("idle","ambient");// and idle could be that plus fidgeting, etc.
-   %this.setActionSeq("walk","walk");
-   %this.setActionSeq("run","run");
-   %this.setActionSeq("fall","runscerd");
-   %this.setActionSeq("getup","rSideGetup");   
-   %this.setActionSeq("attack","power_punch_down");
-   %this.setActionSeq("block","punch_uppercut");//TEMP, don't have any blocking anims atm
-   
-   %this.groundMove();
+   if (%this.dataBlock $= "M4Physics")
+   {
+      %this.setActionSeq("ambient","ambient");//This might not always be idle, could be just breathing
+      %this.setActionSeq("idle","ambient");// and idle could be that plus fidgeting, etc.
+      %this.setActionSeq("walk","walk");
+      %this.setActionSeq("run","run");
+      %this.setActionSeq("fall","runscerd");
+      %this.setActionSeq("getup","rSideGetup");   
+      %this.setActionSeq("attack","power_punch_down");
+      %this.setActionSeq("block","punch_uppercut");//TEMP, don't have any blocking anims atm
+           
+      //%this.setIsRecording(true);
+      
+      %this.groundMove();
+      
+      echo("starting up a M4 physics shape!");      
+   } 
+   else if (%this.dataBlock $= "bo105Physics") 
+   {
+      %this.useDataSource = true;
+      //%this.setIsRecording(true);
+      //%this.showNodes();     
+   } 
+   else if (%this.dataBlock $= "dragonflyPhysics") 
+   {
+      %this.useDataSource = true;
+   }
+   else if (%this.dataBlock $= "ka50Physics") 
+   {
+      %this.useDataSource = true;
+      %this.showNodes();     
+   }
 }
 
 function PhysicsShape::orientTo(%this, %dest)
@@ -142,14 +168,14 @@ function PhysicsShape::moveTo(%this, %dest, %slowDown)
    //%obj.atDestination = false;
 }
 
-
-
 function PhysicsShape::say(%this, %message)//Testing, does this only work for AIPlayers?
 {
    chatMessageAll(%this, '\c3%1: %2', %this.getid(), %message);  
 }
+///////////////////////////////////////////////////////////////////////////////////////
 
 
+//MOVE: these should be in a behaviorTrees folder, or at least a single file.
 function onStartup::precondition(%this, %obj)
 {
    if (%obj.startedUp != true)
@@ -242,7 +268,7 @@ function moveToPosition::behavior(%this, %obj)
 
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+/*
 function openSimEarthGUIs()
 {
    //Eventually load up all OpenSimEarth-related GUI objects from the DB.
@@ -257,13 +283,13 @@ function openSimEarthGUIs()
          %name = sqlite.getColumn(%result, "name");
          %descrip = sqlite.getColumn(%result, "description"); 
          
-         DatabaseSceneList.add(%name,%id);
+         //DatabaseSceneList.add(%name,%id);
          
          sqlite.nextRow(%result);
       }
    } 
    sqlite.clearResult(%result);
-}
+}*/
 
 //Direct copy of EditorSaveMission from menuHandlers.ed.cs. This version exists
 //because mission save is actually just SimObject::save, and that is way too deep 
@@ -408,7 +434,7 @@ function osePullRoads(%simGroup)
    for (%i = 0; %i < MissionGroup.getCount();%i++)
    {
       %obj = MissionGroup.getObject(%i);  
-      if (%obj.getClassName()$="MeshRoad")// and/or DecalRoad
+      if (%obj.getClassName()$="DecalRoad")// and/or MeshRoad
          %simGroup.add(%obj);
    }
    for (%i = 0; %i < %simGroup.getCount();%i++)
@@ -422,7 +448,7 @@ function osePullRoadsAndSave(%simGroup)
    for (%i = 0; %i < MissionGroup.getCount();%i++)
    {
       %obj = MissionGroup.getObject(%i);  
-      if (%obj.getClassName()$="MeshRoad")// and/or DecalRoad
+      if (%obj.getClassName()$="DecalRoad")// and/or MeshRoad
          %simGroup.add(%obj);
    }
    for (%i = 0; %i < %simGroup.getCount();%i++)
@@ -445,7 +471,7 @@ function loadScene(%scene_id)
    %grav = true;
    %ambient = true;
    
-   	//%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behaviorTree," @ 
+   	//%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behavior_tree," @ 
 	         //"p.x as pos_x,p.y as pos_y,p.z as pos_z," @ 
 	         //"sp.x as scene_pos_x,sp.y as scene_pos_y,sp.z as scene_pos_z," @ 
 	         //"r.x as rot_x,r.y as rot_y,r.z as rot_z,r.angle as rot_angle, " @ 
@@ -458,15 +484,16 @@ function loadScene(%scene_id)
 
    //HERE: next step, we need to have a behavior tree name under sceneShape, and each
    //new shape needs to have its behavior assigned at create time, here.
-	%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behaviorTree," @ 
+	%query = "SELECT ss.id as ss_id,shape_id,shapeGroup_id,behavior_tree," @ 
 	         "p.x as pos_x,p.y as pos_y,p.z as pos_z," @ 
-	         "sp.x as scene_pos_x,sp.y as scene_pos_y,sp.z as scene_pos_z," @ 
-	         "r.x as rot_x,r.y as rot_y,r.z as rot_z,r.angle as rot_angle " @ 
+	         "sp.x as scene_pos_x,sp.y as scene_pos_y,sp.z as scene_pos_z,r.x as rot_x," @ 
+	         "r.y as rot_y,r.z as rot_z,r.angle as rot_angle, sh.datablock as datablock " @ 
 	         "FROM sceneShape ss " @ 
 	         "JOIN scene s ON s.id=scene_id " @
 	         "LEFT JOIN vector3 p ON ss.pos_id=p.id " @ 
 	         "LEFT JOIN vector3 sp ON s.pos_id=sp.id " @ 
 	         "LEFT JOIN rotation r ON ss.rot_id=r.id " @ 
+	         "JOIN physicsShape sh ON ss.shape_id=sh.id " @ 
 	         "WHERE scene_id=" @ %scene_id @ ";";  
 	%result = sqlite.query(%query, 0);
 	
@@ -480,7 +507,7 @@ function loadScene(%scene_id)
          %sceneShape_id = sqlite.getColumn(%result, "ss_id");   
          %shape_id = sqlite.getColumn(%result, "shape_id");
          %shapeGroup_id = sqlite.getColumn(%result, "shapeGroup_id");//not used yet
-         %behaviorTree = sqlite.getColumn(%result, "behaviorTree");
+         %behaviorTree = sqlite.getColumn(%result, "behavior_tree");
          
          %pos_x = sqlite.getColumn(%result, "pos_x");
          %pos_y = sqlite.getColumn(%result, "pos_y");
@@ -495,15 +522,26 @@ function loadScene(%scene_id)
          %rot_z = sqlite.getColumn(%result, "rot_z");
          %rot_angle = sqlite.getColumn(%result, "rot_angle");
          
+         %datablock = sqlite.getColumn(%result, "datablock");
+         
          echo("Found a sceneShape: " @ %sceneShape_id @ " " @ %pos_x @ " " @ %pos_y @ " " @ %pos_z @
                 " scenePos " @ %scene_pos_x @ " " @ %scene_pos_y @ " " @ %scene_pos_z );
                 
          %position = (%pos_x + %scene_pos_x) @ " " @ (%pos_y + %scene_pos_y) @ " " @ (%pos_z + %scene_pos_z);
          %rotation = %rot_x @ " " @ %rot_y @ " " @ %rot_z @ " " @ %rot_angle;
          
+         echo("loading scene, shape id " @ %shape_id @ " datablock " @ %datablock);
+         //FIX!!!
+         //if (%shape_id==1)
+         //   %datablock = "M4Physics";
+         //else if (%shape_id==2)
+         //   %datablock = "DragonflyPhysics";
+         //else if (%shape_id==3)
+         //   %datablock = "bo105Physics";
+            
          %temp =  new PhysicsShape() {
             playAmbient = %ambient;
-            dataBlock = "M4Physics";
+            dataBlock = %datablock;
             position = %position;
             rotation = %rotation;
             //scale = "0.5 0.5 0.5";
@@ -530,7 +568,7 @@ function loadScene(%scene_id)
             %temp.schedule(30,"setBehavior",%behaviorTree);
             echo(%temp.getId() @ " assigning behavior tree: " @ %behaviorTree );
          }
-            
+
          sqlite.nextRow(%result);
       }
    }   
@@ -805,25 +843,6 @@ function streetMap()
     
  }  */
    
-//TEMP
-function makeRunways()
-{
-    new DecalRoad() {
-      Material = "DefaultDecalRoadMaterial";
-      textureLength = "25";
-      breakAngle = "3";
-      renderPriority = "10";
-      position = "-8930.98 14017.1 109.587";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      canSave = "1";
-      canSaveDynamicFields = "1";
-
-      Node = "-8930.984375 14017.139648 109.587013 30.000000";
-      Node = "-10035.976563 12977.502930 110.499863 30.000000";
-   };  
-}
-
 //Joint debugging, Chest Kinematic
 function m4CK()
 {
